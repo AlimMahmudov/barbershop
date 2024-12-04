@@ -1,6 +1,7 @@
 "use client";
 import { useRef } from "react";
 import scss from "./Master.module.scss";
+import { FaArrowRight } from "react-icons/fa6";
 
 const Master = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -45,12 +46,26 @@ const Master = () => {
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
             >
-              <div className={scss.box}></div>
+              <div className={scss.box}>
+                <div className={scss.box_text}>
+                  <div></div>
+                </div>
+              </div>
               <div className={scss.box}></div>
               <div className={scss.box}></div>
               <div className={scss.box}></div>
             </div>
-            <div className={scss.want}></div>
+            <div className={scss.want}>
+              <div className={scss.want_box}>
+                <h1>Хочешь к нам в команду?</h1>
+                <p>
+                  Присылай резюме
+                  <span>
+                    <FaArrowRight />
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

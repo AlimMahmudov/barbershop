@@ -13,15 +13,17 @@ const Hero = () => {
           <div className={scss.hero}>
             <div className={scss.hero_text}>
               <h1>
-                Идиальная <br /> стрижка
+                ИДИАЛЬНАЯ <br /> СТРИЖКА
               </h1>
               <h2>в один клик!</h2>
               <p>
-                Забудь о долгом ожидании! Запишись онлайн и наслаждайся
-                комфортом и стилем Наши барберы создадут образ, который покорит
-                всех!
+                Запишись онлайн и наслаждайся комфортом и стилем! Наши барберы
+                создадут образ, который покорит всех!
               </p>
-              <button>Записаться on-line</button>
+              <div className={scss.buttons}>
+                <button>Записаться on-line</button>
+                <h4>Забудь о долгом ожидании!</h4>
+              </div>
             </div>
             <div className={scss.hero_img}>
               <Image src={hero_logo} alt="" />
