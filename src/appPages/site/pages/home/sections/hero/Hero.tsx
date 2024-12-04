@@ -1,11 +1,14 @@
+"use client";
 import Image from "next/image";
 import scss from "./Hero.module.scss";
 import hero_logo from "@/shared/assets/images/hero_logo.svg";
 import barber from "@/shared/assets/images/hero_barber.svg";
 import barber2 from "@/shared/assets/images/hero_barber2.svg";
 import barber3 from "@/shared/assets/images/hero_barber3.svg";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
+  const router = useRouter();
   return (
     <>
       <section id={scss.Hero}>
@@ -21,7 +24,9 @@ const Hero = () => {
                 создадут образ, который покорит всех!
               </p>
               <div className={scss.buttons}>
-                <button>Записаться on-line</button>
+                <button onClick={() => router.push("/record/")}>
+                  Записаться on-line
+                </button>
                 <h4>Забудь о долгом ожидании!</h4>
               </div>
             </div>
