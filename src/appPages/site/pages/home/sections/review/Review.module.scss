@@ -1,0 +1,45 @@
+#Review {
+  padding: 50px;
+  padding-top: 100px;
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h1 {
+      color: #f0f0f0;
+      font-size: 80px;
+    }
+
+    .review_scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px;
+      max-width: 100%;
+      cursor: grab; /* Указатель "рука" */
+      user-select: none; /* Отключить выделение текста при скролле */
+
+      &.active {
+        cursor: grabbing; /* Указатель при удержании */
+      }
+
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #dd9700;
+        border-radius: 4px;
+      }
+
+      .box {
+        border-radius: 20px;
+        width: 395px;
+        height: 421px;
+        background-color: #313131;
+        flex-shrink: 0;
+      }
+    }
+  }
+}

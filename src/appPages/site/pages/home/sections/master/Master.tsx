@@ -1,6 +1,32 @@
+"use client";
+import { useRef } from "react";
 import scss from "./Master.module.scss";
 
 const Master = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (scrollRef.current) {
+      isDragging.current = true;
+      startX.current = e.pageX - scrollRef.current.offsetLeft;
+      scrollLeft.current = scrollRef.current.scrollLeft;
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = x - startX.current;
+    scrollRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    isDragging.current = false;
+  };
   return (
     <div id={scss.Master}>
       <div className="container">
@@ -10,16 +36,21 @@ const Master = () => {
             Наша команда – это сплоченный коллектив <span>опытных</span>
             барберов, каждый из которых – настоящий мастер своего дела.
           </h2>
-        </div>
-        <div className={scss.block}>
-          <div className={scss.box}>
-            <div className={scss.name}>
-              <h1></h1>
-              <p></p>
+          <div className={scss.block}>
+            <div
+              className={scss.review_scroll}
+              ref={scrollRef}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUpOrLeave}
+              onMouseLeave={handleMouseUpOrLeave}
+            >
+              <div className={scss.box}></div>
+              <div className={scss.box}></div>
+              <div className={scss.box}></div>
+              <div className={scss.box}></div>
             </div>
-            <div className={scss.logo}>
-              <h1></h1>
-            </div>
+            <div className={scss.want}></div>
           </div>
         </div>
       </div>

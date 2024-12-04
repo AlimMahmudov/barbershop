@@ -1,0 +1,77 @@
+#Master {
+  padding: 100px;
+  .master {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    h1 {
+      font-family: Bebas Neue;
+      font-size: 80px;
+      font-weight: 700;
+      line-height: 80px;
+      color: #ffffff;
+    }
+    h2 {
+      font-family: Gotham Pro;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 21.6px;
+      color: #ffffff;
+      width: 600px;
+    }
+    span {
+      font-family: Arial;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 27.54px;
+      background: #dd9700;
+      transform: rotate(-5deg);
+      padding: 7px;
+      border-radius: 20px;
+      color: #f6f6f6;
+    }
+    .block {
+      display: flex;
+      justify-content: space-between;
+      //   gap: 20px;
+
+      .review_scroll {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px 0px;
+        max-width: 75%;
+        cursor: grab; /* Указатель "рука" */
+        user-select: none; /* Отключить выделение текста при скролле */
+
+        &.active {
+          cursor: grabbing; /* Указатель при удержании */
+        }
+
+        &::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #dd9700;
+          border-radius: 4px;
+        }
+
+        .box {
+          border-radius: 20px;
+          width: 300px;
+          height: 370px;
+          background-color: #313131;
+          flex-shrink: 0;
+        }
+      }
+      .want {
+        width: 297px;
+        height: 446px;
+        border-radius: 20px;
+        background: #313131;
+        margin-top: 10px;
+      }
+    }
+  }
+}
