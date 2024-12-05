@@ -2,6 +2,32 @@
 import { useRef } from "react";
 import scss from "./Master.module.scss";
 import { FaArrowRight } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import barber from "@/shared/assets/images/barber.svg";
+import Image from "next/image";
+
+const data = [
+  {
+    name: "Макс Корж",
+    barber: "Топ-барбер",
+    img: barber,
+  },
+  {
+    name: "Макс Корж",
+    barber: "Топ-барбер",
+    img: barber,
+  },
+  {
+    name: "Макс Корж",
+    barber: "Топ-барбер",
+    img: barber,
+  },
+  {
+    name: "Макс Корж",
+    barber: "Топ-барбер",
+    img: barber,
+  },
+];
 
 const Master = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -46,14 +72,22 @@ const Master = () => {
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
             >
-              <div className={scss.box}>
-                <div className={scss.box_text}>
-                  <div></div>
-                </div>
-              </div>
-              <div className={scss.box}></div>
-              <div className={scss.box}></div>
-              <div className={scss.box}></div>
+              {data.map((el, index) => (
+                <>
+                  <div key={index} className={scss.box}>
+                    <div className={scss.box_text}>
+                      <div className={scss.box_h1}>
+                        <h1>{el.name}</h1>
+                        <p>{el.barber}</p>
+                      </div>
+                      <h2>
+                        <FaInstagram />
+                      </h2>
+                    </div>
+                    <Image src={el.img} alt="" />
+                  </div>
+                </>
+              ))}
             </div>
             <div className={scss.want}>
               <div className={scss.want_box}>

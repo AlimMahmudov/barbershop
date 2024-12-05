@@ -1,6 +1,7 @@
 import Image from "next/image";
 import scss from "./Map.module.scss";
 import logo from "@/shared/assets/images/logo.svg";
+import { LuPhoneCall } from "react-icons/lu";
 
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -29,20 +30,22 @@ const Map = () => {
             ></iframe>
             <div className={scss.map_text}>
               <h1>записывайтесь мы всегда вас ждем</h1>
-              <p>+996 708 000 000</p>
+              <p>
+                <LuPhoneCall /> +996 708 000 000
+              </p>
               <p>
                 Кыргызстан, Бишкек, улица Лучшая 35 <br /> Ежедневно с 08:00 до
                 20:00
               </p>
               <div className={scss.icons}>
                 <h2>
-                  <FaFacebook />
-                </h2>
-                <h2>
                   <FaInstagram />
                 </h2>
                 <h2>
                   <SlSocialTwitter />
+                </h2>
+                <h2>
+                  <FaFacebook />
                 </h2>
               </div>
             </div>
