@@ -20,6 +20,7 @@ interface IFormTelegram {
   teleUser: string;
   emailUser: string;
 }
+
 const Date = () => {
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
   const [selectedOptions, setSelectedOptions] = useState({
@@ -199,6 +200,7 @@ const Date = () => {
       </section>
 
       {/* Section User Information */}
+      {/* Section User Information */}
       <section id={scss.User}>
         <div className="container">
           <div className={scss.user}>
@@ -220,7 +222,20 @@ const Date = () => {
                   placeholder="Your Email"
                   {...register("emailUser", { required: true })}
                 />
-                <button type="submit">Submit</button>
+                {/* Buttons for Next Step and Back */}
+                <div className={scss.navigationButtons}>
+                  {currentStep > 0 && (
+                    <button
+                      onClick={() => setCurrentStep(currentStep - 1)}
+                      className={scss.prevButton}
+                    >
+                      Назад
+                    </button>
+                  )}
+                  <button type="submit" className={scss.nextButton}>
+                    Next Step
+                  </button>
+                </div>
               </form>
             )}
           </div>
@@ -256,6 +271,14 @@ const Date = () => {
       {currentStep < 4 && (
         <section id={scss.NextStep}>
           <div className="container">
+            {currentStep > 0 && (
+              <button
+                onClick={() => setCurrentStep(currentStep - 1)}
+                className={scss.prevButton}
+              >
+                Назад
+              </button>
+            )}
             <button onClick={handleNextStep} className={scss.nextButton}>
               Next Step
             </button>
