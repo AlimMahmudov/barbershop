@@ -1,39 +1,42 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import scss from "./Date.module.scss";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
-const data = [
-  { number: [{ num: "1" }, { num: "2" }, { num: "3" }, { num: "4" }] },
-  { names: [{ name: "alim" }, { name: "asim" }, { name: "abdy" }] },
-  { prices: [{ price: "300" }, { price: "400" }, { price: "500" }] },
-  { dates: [{ oclo: "10:30" }, { oclo: "11:00" }, { oclo: "11:30" }] },
-];
+// import ReactDatePicker from "react-datepicker";
+// import Calendar from "react-calendar";
+import "react-datepicker/dist/react-datepicker.css";
+import Image from "next/image";
+import { data } from "@/shared/data/Data";
 
 interface IFormTelegram {
   prices: string[];
   name: string;
-  number: string;
-  dates: string;
+  date: string;
+  time: string;
   nameUser: string;
   teleUser: string;
   emailUser: string;
 }
 
-const Date = () => {
+const DateComponent = () => {
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
   const [selectedOptions, setSelectedOptions] = useState({
-    number: "",
+    date: "",
     name: "",
     prices: [],
-    dates: "",
+    time: "",
     nameUser: "",
     teleUser: "",
     emailUser: "",
   });
-
+  const [isClient, setIsClient] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+
+  useEffect(() => {
+    // Устанавливаем, что код рендерится на клиенте
+    setIsClient(true);
+  }, []);
 
   const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
   const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
@@ -41,8 +44,8 @@ const Date = () => {
   const messageModel = (data: IFormTelegram) => {
     let messageTG = `Price(s): <b>${data.prices.join(", ")}</b>\n`;
     messageTG += `Name: <b>${data.name}</b>\n`;
-    messageTG += `Number: <b>${data.number}</b>\n`;
-    messageTG += `Date: <b>${data.dates}</b>\n`;
+    messageTG += `date: <b>${data.date}</b>\n`;
+    messageTG += `time: <b>${data.time}</b>\n`;
     messageTG += `User Name: <b>${data.nameUser}</b>\n`;
     messageTG += `User Phone: <b>${data.teleUser}</b>\n`;
     messageTG += `User Email: <b>${data.emailUser}</b>`;
@@ -53,8 +56,8 @@ const Date = () => {
     const selectedData: IFormTelegram = {
       prices: selectedOptions.prices,
       name: selectedOptions.name,
-      number: selectedOptions.number,
-      dates: selectedOptions.dates,
+      date: selectedOptions.date,
+      time: selectedOptions.time,
       nameUser: selectedOptions.nameUser,
       teleUser: selectedOptions.teleUser,
       emailUser: selectedOptions.emailUser,
@@ -67,15 +70,15 @@ const Date = () => {
     });
     reset();
     setSelectedOptions({
-      number: "",
+      date: "",
       name: "",
       prices: [],
-      dates: "",
+      time: "",
       nameUser: "",
       teleUser: "",
       emailUser: "",
     });
-    setCurrentStep(5); // Переход на section End
+    setCurrentStep(5);
   };
 
   const handleOptionSelect = (category: string, value: string) => {
@@ -86,8 +89,10 @@ const Date = () => {
   };
 
   const handleNextStep = () => {
-    if (currentStep < 5) {
-      setCurrentStep(currentStep + 1); // Перейти к следующему шагу
+    if (currentStep === 0 && selectedOptions.date) {
+      setCurrentStep(currentStep + 1);
+    } else if (currentStep < 5) {
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -101,27 +106,50 @@ const Date = () => {
     handleNextStep(); // Переход на следующий шаг после ввода данных
   };
 
+  //   const handleDateChange = (date: any) => {
+  //     if (date && Array.isArray(date)) {
+  //       setSelectedOptions((prev) => ({
+  //         ...prev,
+  //         date: date[0].toISOString().split("T")[0],
+  //       }));
+  //     } else if (date) {
+  //       setSelectedOptions((prev) => ({
+  //         ...prev,
+  //         date: date.toISOString().split("T")[0],
+  //       }));
+  //     }
+  //   };
   return (
     <>
-      {/* Section Number */}
-      <section id={scss.Number}>
+      {/* Section Date */}
+      <section id={scss.Date}>
         <div className="container">
-          <div className={scss.number}>
-            {currentStep === 0 && data[0]?.number && (
-              <div className={scss.category}>
-                <h2>Number</h2>
-                <div className={scss.options}>
-                  {data[0].number.map((option, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleOptionSelect("number", option.num)}
-                      className={scss.button}
-                    >
-                      {option.num}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          <div className={scss.date}>
+            {currentStep === 0 && isClient && (
+              //   <div className={scss.category}>
+              //     <div className={scss.buttons}>
+              //       <button>1</button>
+              //       <div className={scss.line}></div>
+              //       <button>1</button>
+              //       <div className={scss.line}></div>
+              //       <button>1</button>
+              //       <div className={scss.line}></div>
+              //       <button>1</button>
+              //       <div className={scss.line}></div>
+              //       <button>1</button>
+              //     </div>
+              //     <h2>Pick a Date</h2>
+              //     <Calendar
+              //       onChange={handleDateChange}
+              //       value={
+              //         selectedOptions.date
+              //           ? new Date(selectedOptions.date)
+              //           : new Date()
+              //       }
+              //       className={scss.calendar}
+              //     />
+              //   </div>
+              <div className=""></div>
             )}
           </div>
         </div>
@@ -131,18 +159,33 @@ const Date = () => {
       <section id={scss.Name}>
         <div className="container">
           <div className={scss.name}>
-            {currentStep === 1 && data[1]?.names && (
+            {currentStep === 1 && data[0]?.names && (
               <div className={scss.category}>
-                <h2>Names</h2>
+                <div className={scss.buttons}>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
+                    1
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                </div>
+                <h1>выберите специалиста</h1>
                 <div className={scss.options}>
-                  {data[1].names.map((option, idx) => (
-                    <button
+                  {data[0].names.map((option, idx) => (
+                    <div
                       key={idx}
                       onClick={() => handleOptionSelect("name", option.name)}
-                      className={scss.button}
+                      className={scss.box}
                     >
-                      {option.name}
-                    </button>
+                      <Image src={option.img} alt="" />
+                      <h2>{option.name}</h2>
+                      <h3>{option.work}</h3>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -155,18 +198,33 @@ const Date = () => {
       <section id={scss.Price}>
         <div className="container">
           <div className={scss.price}>
-            {currentStep === 2 && data[2]?.prices && (
+            {currentStep === 2 && data[1]?.prices && (
               <div className={scss.category}>
-                <h2>Prices</h2>
+                <div className={scss.buttons}>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
+                    1
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                </div>
+                <h1>выберите услуги</h1>
                 <div className={scss.options}>
-                  {data[2].prices.map((option, idx) => (
-                    <button
+                  {data[1].prices.map((option, idx) => (
+                    <div
                       key={idx}
                       onClick={() => handleOptionSelect("prices", option.price)}
-                      className={scss.button}
+                      className={scss.box}
                     >
-                      {option.price}
-                    </button>
+                      <Image src={option.img} alt="" />
+                      <h2>{option.name}</h2>
+                      <h3>{option.price}</h3>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -179,19 +237,60 @@ const Date = () => {
       <section id={scss.Date}>
         <div className="container">
           <div className={scss.date}>
-            {currentStep === 3 && data[3]?.dates && (
+            {currentStep === 3 && data[2]?.time && (
               <div className={scss.category}>
                 <h2>Dates</h2>
-                <div className={scss.options}>
-                  {data[3].dates.map((option, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleOptionSelect("dates", option.oclo)}
-                      className={scss.button}
-                    >
-                      {option.oclo}
-                    </button>
-                  ))}
+
+                <div className={scss.block}>
+                  {data[2].time[0].utro && (
+                    <div className={scss.options}>
+                      {data[2].time[0].utro.map((option, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() =>
+                            handleOptionSelect("time", option.oclo)
+                          }
+                          className={scss.button}
+                        >
+                          {option.oclo}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Afternoon times */}
+                  {data[2].time[1].day && (
+                    <div className={scss.options2}>
+                      {data[2].time[1].day.map((option, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() =>
+                            handleOptionSelect("time", option.oclo)
+                          }
+                          className={scss.button}
+                        >
+                          {option.oclo}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Evening times */}
+                  {data[2].time[2].vech && (
+                    <div className={scss.options}>
+                      {data[2].time[2].vech.map((option, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() =>
+                            handleOptionSelect("time", option.oclo)
+                          }
+                          className={scss.button}
+                        >
+                          {option.oclo}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -199,7 +298,6 @@ const Date = () => {
         </div>
       </section>
 
-      {/* Section User Information */}
       {/* Section User Information */}
       <section id={scss.User}>
         <div className="container">
@@ -222,7 +320,6 @@ const Date = () => {
                   placeholder="Your Email"
                   {...register("emailUser", { required: true })}
                 />
-                {/* Buttons for Next Step and Back */}
                 <div className={scss.navigationButtons}>
                   {currentStep > 0 && (
                     <button
@@ -250,10 +347,10 @@ const Date = () => {
               <div className={scss.results}>
                 <h2>Итог:</h2>
                 <div>
-                  <p>Number: {selectedOptions.number}</p>
+                  <p>date: {selectedOptions.date}</p>
                   <p>Name: {selectedOptions.name}</p>
                   <p>Prices: {selectedOptions.prices.join(", ")}</p>
-                  <p>Dates: {selectedOptions.dates}</p>
+                  <p>time: {selectedOptions.time}</p>
                   <p>UserName: {selectedOptions.nameUser}</p>
                   <p>UserTel: {selectedOptions.teleUser}</p>
                   <p>UserEmail: {selectedOptions.emailUser}</p>
@@ -271,17 +368,21 @@ const Date = () => {
       {currentStep < 4 && (
         <section id={scss.NextStep}>
           <div className="container">
-            {currentStep > 0 && (
-              <button
-                onClick={() => setCurrentStep(currentStep - 1)}
-                className={scss.prevButton}
-              >
-                Назад
-              </button>
-            )}
-            <button onClick={handleNextStep} className={scss.nextButton}>
-              Next Step
-            </button>
+            <div className={scss.next}>
+              {currentStep > 0 && (
+                <button
+                  onClick={() => setCurrentStep(currentStep - 1)}
+                  className={scss.prevButton}
+                >
+                  Назад
+                </button>
+              )}
+              {currentStep < 4 && (
+                <button onClick={handleNextStep} className={scss.nextButton}>
+                  Next Step
+                </button>
+              )}
+            </div>
           </div>
         </section>
       )}
@@ -289,4 +390,4 @@ const Date = () => {
   );
 };
 
-export default Date;
+export default DateComponent;
