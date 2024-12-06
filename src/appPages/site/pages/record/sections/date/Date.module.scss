@@ -1,3 +1,43 @@
+#Date {
+  .date {
+    .category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      height: 620px;
+
+      .buttons {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        .line {
+          width: 100px;
+          height: 3px;
+          background: #f6f6f6;
+        }
+        button {
+          width: 40px;
+          height: 40px;
+          color: #f6f6f6;
+          background: none;
+          border: solid 2px #f6f6f6;
+          border-radius: 5px;
+        }
+      }
+      h1 {
+        font-family: Bebas Neue;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 60px;
+        color: #f6f6f6;
+      }
+    }
+  }
+}
+
 #Name {
   color: #f6f6f6;
   .name {
@@ -11,6 +51,7 @@
       flex-direction: column;
       align-items: center;
       gap: 30px;
+      height: 620px;
 
       .buttons {
         align-items: center;
@@ -84,6 +125,7 @@
       flex-direction: column;
       align-items: center;
       gap: 30px;
+      height: 620px;
       .buttons {
         align-items: center;
         display: flex;
@@ -148,8 +190,8 @@
   }
 }
 
-#Date {
-  .date {
+#Time {
+  .time {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,8 +200,31 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
+      height: 620px;
+      gap: 30px;
 
-      h2 {
+      .buttons {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        .line {
+          width: 100px;
+          height: 3px;
+          background: #f6f6f6;
+        }
+        button {
+          width: 40px;
+          height: 40px;
+          color: #f6f6f6;
+          background: none;
+          border: solid 2px #f6f6f6;
+          border-radius: 5px;
+        }
+      }
+
+      h1 {
         font-family: Bebas Neue;
         font-size: 60px;
         font-weight: 700;
@@ -170,11 +235,21 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
+        gap: 30px;
 
         .options {
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 20px;
+
+          h2 {
+            font-family: Bebas Neue;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 24px;
+            color: #f6f6f6;
+          }
 
           button {
             font-family: Gotham Pro;
@@ -211,6 +286,126 @@
 
             &:focus {
               background: #383838;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#User {
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+
+      h1 {
+        font-family: Bebas Neue;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 60px;
+        color: #f6f6f6;
+      }
+      .buttons {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 30px;
+        .line {
+          width: 100px;
+          height: 3px;
+          background: #f6f6f6;
+        }
+        button {
+          width: 40px;
+          height: 40px;
+          color: #f6f6f6;
+          background: none;
+          border: solid 2px #f6f6f6;
+          border-radius: 5px;
+        }
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+
+        .input_box {
+          height: 380px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+
+            p {
+              font-family: Gotham Pro;
+              font-size: 20px;
+              font-weight: 400;
+              line-height: 24px;
+              color: #f6f6f6;
+            }
+            input {
+              width: 500px;
+              height: 60px;
+              border-radius: 10px;
+              border: solid 2px #f6f6f6;
+              background: none;
+              outline: none;
+              padding: 10px;
+              font-size: 20px;
+            }
+          }
+        }
+        .navigationButtons {
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+
+          .prevButton {
+            width: 270px;
+            height: 60px;
+            background: none;
+            border-radius: 20px;
+            color: #f6f6f6;
+            font-size: 20px;
+            border: solid 2px #f6f6f6;
+            transition: 0.3s;
+
+            &:hover {
+              transition: 0.5s;
+              background: #f6f6f6;
+              color: #000;
+            }
+          }
+          .nextButton {
+            width: 270px;
+            height: 60px;
+            background: none;
+            border-radius: 20px;
+            color: #f6f6f6;
+            font-size: 20px;
+            border: solid 2px #f6f6f6;
+            transition: 0.3s;
+
+            &:hover {
+              transition: 0.5s;
+              background: #f6f6f6;
+              color: #000;
             }
           }
         }

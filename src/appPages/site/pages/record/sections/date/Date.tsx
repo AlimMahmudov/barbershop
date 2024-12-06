@@ -126,30 +126,31 @@ const DateComponent = () => {
         <div className="container">
           <div className={scss.date}>
             {currentStep === 0 && isClient && (
-              //   <div className={scss.category}>
-              //     <div className={scss.buttons}>
-              //       <button>1</button>
-              //       <div className={scss.line}></div>
-              //       <button>1</button>
-              //       <div className={scss.line}></div>
-              //       <button>1</button>
-              //       <div className={scss.line}></div>
-              //       <button>1</button>
-              //       <div className={scss.line}></div>
-              //       <button>1</button>
-              //     </div>
-              //     <h2>Pick a Date</h2>
-              //     <Calendar
-              //       onChange={handleDateChange}
-              //       value={
-              //         selectedOptions.date
-              //           ? new Date(selectedOptions.date)
-              //           : new Date()
-              //       }
-              //       className={scss.calendar}
-              //     />
-              //   </div>
-              <div className=""></div>
+              <div className={scss.category}>
+                <h1>Укажите дату</h1>
+                <div className={scss.buttons}>
+                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
+                    1
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                </div>
+                {/* <Calendar
+                    onChange={handleDateChange}
+                    value={
+                      selectedOptions.date
+                        ? new Date(selectedOptions.date)
+                        : new Date()
+                    }
+                    className={scss.calendar}
+                  /> */}
+              </div>
             )}
           </div>
         </div>
@@ -161,6 +162,7 @@ const DateComponent = () => {
           <div className={scss.name}>
             {currentStep === 1 && data[0]?.names && (
               <div className={scss.category}>
+                <h1>выберите специалиста</h1>
                 <div className={scss.buttons}>
                   <button>1</button>
                   <div className={scss.line}></div>
@@ -174,7 +176,7 @@ const DateComponent = () => {
                   <div className={scss.line}></div>
                   <button>1</button>
                 </div>
-                <h1>выберите специалиста</h1>
+
                 <div className={scss.options}>
                   {data[0].names.map((option, idx) => (
                     <div
@@ -200,6 +202,7 @@ const DateComponent = () => {
           <div className={scss.price}>
             {currentStep === 2 && data[1]?.prices && (
               <div className={scss.category}>
+                <h1>выберите услуги</h1>
                 <div className={scss.buttons}>
                   <button>1</button>
                   <div className={scss.line}></div>
@@ -213,7 +216,6 @@ const DateComponent = () => {
                   <div className={scss.line}></div>
                   <button>1</button>
                 </div>
-                <h1>выберите услуги</h1>
                 <div className={scss.options}>
                   {data[1].prices.map((option, idx) => (
                     <div
@@ -234,16 +236,30 @@ const DateComponent = () => {
       </section>
 
       {/* Section Dates */}
-      <section id={scss.Date}>
+      <section id={scss.Time}>
         <div className="container">
-          <div className={scss.date}>
+          <div className={scss.time}>
             {currentStep === 3 && data[2]?.time && (
               <div className={scss.category}>
-                <h2>Dates</h2>
+                <h1>укажите время</h1>
+                <div className={scss.buttons}>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
+                    1
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                </div>
 
                 <div className={scss.block}>
                   {data[2].time[0].utro && (
                     <div className={scss.options}>
+                      <h2>Утро</h2>
                       {data[2].time[0].utro.map((option, idx) => (
                         <button
                           key={idx}
@@ -260,24 +276,28 @@ const DateComponent = () => {
 
                   {/* Afternoon times */}
                   {data[2].time[1].day && (
-                    <div className={scss.options2}>
-                      {data[2].time[1].day.map((option, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() =>
-                            handleOptionSelect("time", option.oclo)
-                          }
-                          className={scss.button}
-                        >
-                          {option.oclo}
-                        </button>
-                      ))}
+                    <div className={scss.options}>
+                      <h2>День</h2>
+                      <div className={scss.options2}>
+                        {data[2].time[1].day.map((option, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() =>
+                              handleOptionSelect("time", option.oclo)
+                            }
+                            className={scss.button}
+                          >
+                            {option.oclo}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   )}
 
                   {/* Evening times */}
                   {data[2].time[2].vech && (
                     <div className={scss.options}>
+                      <h2>Вечер</h2>
                       {data[2].time[2].vech.map((option, idx) => (
                         <button
                           key={idx}
@@ -303,37 +323,66 @@ const DateComponent = () => {
         <div className="container">
           <div className={scss.user}>
             {currentStep === 4 && (
-              <form onSubmit={handleSubmit(handleUserInfoSubmit)}>
-                <h2>User Information</h2>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  {...register("nameUser", { required: true })}
-                />
-                <input
-                  type="text"
-                  placeholder="Your Phone"
-                  {...register("teleUser", { required: true })}
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  {...register("emailUser", { required: true })}
-                />
-                <div className={scss.navigationButtons}>
-                  {currentStep > 0 && (
-                    <button
-                      onClick={() => setCurrentStep(currentStep - 1)}
-                      className={scss.prevButton}
-                    >
-                      Назад
-                    </button>
-                  )}
-                  <button type="submit" className={scss.nextButton}>
-                    Next Step
+              <div className={scss.category}>
+                <h1>введите ваши данные</h1>
+                <div className={scss.buttons}>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button>1</button>
+                  <div className={scss.line}></div>
+                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
+                    1
                   </button>
                 </div>
-              </form>
+                <form
+                  className={scss.form}
+                  onSubmit={handleSubmit(handleUserInfoSubmit)}
+                >
+                  <div className={scss.input_box}>
+                    <div className={scss.inputs}>
+                      <p>Имя *</p>
+                      <input
+                        type="text"
+                        placeholder="Введите своё имя"
+                        {...register("nameUser", { required: true })}
+                      />
+                    </div>
+                    <div className={scss.inputs}>
+                      <p>Телефон *</p>
+                      <input
+                        type="text"
+                        placeholder="Введите свой номер"
+                        {...register("teleUser", { required: true })}
+                      />
+                    </div>
+                    <div className={scss.inputs}>
+                      <p>Email</p>
+                      <input
+                        type="email"
+                        placeholder="Введите свою почту"
+                        {...register("emailUser", { required: true })}
+                      />
+                    </div>
+                  </div>
+                  <div className={scss.navigationButtons}>
+                    {currentStep > 0 && (
+                      <button
+                        onClick={() => setCurrentStep(currentStep - 1)}
+                        className={scss.prevButton}
+                      >
+                        Назад
+                      </button>
+                    )}
+                    <button type="submit" className={scss.nextButton}>
+                      Next Step
+                    </button>
+                  </div>
+                </form>
+              </div>
             )}
           </div>
         </div>
