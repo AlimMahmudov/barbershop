@@ -9,6 +9,12 @@ import Image from "next/image";
 import { data } from "@/shared/data/Data";
 import { useRouter } from "next/navigation";
 
+import { CiCalendarDate } from "react-icons/ci";
+import { TbRazorElectric } from "react-icons/tb";
+import { IoMan } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa";
+import { GoClock } from "react-icons/go";
+
 interface IFormTelegram {
   num: string;
   photo: string;
@@ -150,17 +156,31 @@ const DateComponent = () => {
               <div className={scss.category}>
                 <h1>Укажите дату</h1>
                 <div className={scss.buttons}>
-                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
-                    1
+                  <button
+                    style={{
+                      backgroundColor: "#DD9700",
+                      color: "#000",
+                      fontSize: "24px",
+                    }}
+                  >
+                    <CiCalendarDate />
                   </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <IoMan />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <TbRazorElectric />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <GoClock />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <FaCheck />
+                  </button>
                 </div>
 
                 <div className={scss.options}>
@@ -187,17 +207,31 @@ const DateComponent = () => {
               <div className={scss.category}>
                 <h1>выберите специалиста</h1>
                 <div className={scss.buttons}>
-                  <button>1</button>
-                  <div className={scss.line}></div>
-                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
-                    1
+                  <button>
+                    <CiCalendarDate />
                   </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button
+                    style={{
+                      backgroundColor: "#DD9700",
+                      color: "#000",
+                      fontSize: "24px",
+                    }}
+                  >
+                    <IoMan />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <TbRazorElectric />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <GoClock />
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>
+                    <FaCheck />
+                  </button>
                 </div>
 
                 <div className={scss.options}>
@@ -233,17 +267,31 @@ const DateComponent = () => {
               <div className={scss.category}>
                 <h1>выберите услуги</h1>
                 <div className={scss.buttons}>
-                  <button>1</button>
-                  <div className={scss.line}></div>
-                  <button>1</button>
-                  <div className={scss.line}></div>
-                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
-                    1
+                  <button>
+                    <CiCalendarDate />
                   </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <IoMan />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button
+                    style={{
+                      backgroundColor: "#DD9700",
+                      color: "#000",
+                      fontSize: "24px",
+                    }}
+                  >
+                    <TbRazorElectric />
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>
+                    <GoClock />
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>
+                    <FaCheck />
+                  </button>
                 </div>
                 <div className={scss.options}>
                   {data[1].prices.map((option, idx) => (
@@ -278,17 +326,31 @@ const DateComponent = () => {
               <div className={scss.category}>
                 <h1>укажите время</h1>
                 <div className={scss.buttons}>
-                  <button>1</button>
-                  <div className={scss.line}></div>
-                  <button>1</button>
-                  <div className={scss.line}></div>
-                  <button>1</button>
-                  <div className={scss.line}></div>
-                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
-                    1
+                  <button>
+                    <CiCalendarDate />
                   </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <IoMan />
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>
+                    <TbRazorElectric />
+                  </button>
+                  <div className={scss.line}></div>
+                  <button
+                    style={{
+                      backgroundColor: "#DD9700",
+                      color: "#000",
+                      fontSize: "24px",
+                    }}
+                  >
+                    <GoClock />
+                  </button>
+                  <div className={scss.line}></div>
+                  <button>
+                    <FaCheck />
+                  </button>
                 </div>
 
                 <div className={scss.block}>
@@ -361,16 +423,30 @@ const DateComponent = () => {
               <div className={scss.category}>
                 <h1>введите ваши данные</h1>
                 <div className={scss.buttons}>
-                  <button>1</button>
+                  <button>
+                    <CiCalendarDate />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <IoMan />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <TbRazorElectric />
+                  </button>
                   <div className={scss.line}></div>
-                  <button>1</button>
+                  <button>
+                    <GoClock />
+                  </button>
                   <div className={scss.line}></div>
-                  <button style={{ backgroundColor: "#DD9700", color: "#000" }}>
-                    1
+                  <button
+                    style={{
+                      backgroundColor: "#DD9700",
+                      color: "#000",
+                      fontSize: "24px",
+                    }}
+                  >
+                    <FaCheck />
                   </button>
                 </div>
                 <form
@@ -486,7 +562,7 @@ const DateComponent = () => {
                       <div className={scss.box_h1}>
                         <p>{selectedOptions.nameUser}</p>
                         <p>{selectedOptions.teleUser}</p>
-                        <p>{selectedOptions.emailUser}</p>
+                        {/* <p>{selectedOptions.emailUser}</p> */}
                       </div>
                     </div>
                   </div>
