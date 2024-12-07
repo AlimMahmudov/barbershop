@@ -4,7 +4,7 @@ import point from "@/shared/assets/images/point.svg";
 
 const Discount = () => {
   return (
-    <div id={scss.Discount}>
+    <div 	data-aos="fade-up"  id={scss.Discount}>
       <div className="container">
         <div className={scss.discount}>
           <div className={scss.text}>

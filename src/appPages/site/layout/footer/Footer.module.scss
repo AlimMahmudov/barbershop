@@ -1,0 +1,26 @@
+.Footer {
+  padding: 30px;
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    p{
+      color: white;
+    }
+  }
+}
+@media(max-width:"500px") {
+  .Footer {
+    padding: 30px;
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      p{
+        color: white;
+      }
+    }
+  }
+}

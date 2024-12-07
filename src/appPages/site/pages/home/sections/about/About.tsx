@@ -35,7 +35,7 @@ const data = [
 
 const About = () => {
   return (
-    <div id={scss.About}>
+    <div data-aos="fade-up" id={scss.About}>
       <div className="container">
         <div className={scss.about}>
           <div className={scss.text}>
@@ -48,8 +48,11 @@ const About = () => {
           </div>
           <div className={scss.block}>
             {data.map((el, index) => (
-              <div key={index} className={scss.box}>
-                <Image src={el.image} alt="" />
+              <div 	data-aos="fade-up" data-aos-delay={index * 200}
+               key={index} className={scss.box}>
+                 <div className={scss.images}>
+                 <Image src={el.image} alt="img" />
+                 </div>
                 <h2>{el.text}</h2>
                 <p>{el.discription}</p>
               </div>

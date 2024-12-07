@@ -64,7 +64,7 @@ const Master = () => {
             барберов, каждый из которых – настоящий мастер своего дела.
           </h2>
           <div className={scss.block}>
-            <div
+            <div 	data-aos="fade-up" 
               className={scss.review_scroll}
               ref={scrollRef}
               onMouseDown={handleMouseDown}
@@ -84,7 +84,7 @@ const Master = () => {
                         <FaInstagram />
                       </h2>
                     </div>
-                    <Image src={el.img} alt="" />
+                    <Image data-aos="fade-up" src={el.img} alt="" />
                   </div>
                 </>
               ))}

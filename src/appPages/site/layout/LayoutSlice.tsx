@@ -10,7 +10,7 @@ interface SiteLayoutProps {
 
 const LayoutSlice: FC<SiteLayoutProps> = ({ children }) => {
   return (
-    <div id={scss.LayoutSlice}>
+    <div className="" id={scss.LayoutSlice}>
       <Header />
       <main>{children}</main>
       <Footer />

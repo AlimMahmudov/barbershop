@@ -30,7 +30,7 @@ const Sertifikat = () => {
               </button>
             </div>
           </div>
-          <Image src={sertifikats} alt="" />
+          <Image data-aos="zoom-in" src={sertifikats} alt="" />
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ const Hero = () => {
       <section id={scss.Hero}>
         <div className="container">
           <div className={scss.hero}>
-            <div className={scss.hero_text}>
+            <div data-aos="fade-up" className={scss.hero_text}>
               <h1>
                 ИДИАЛЬНАЯ <br /> СТРИЖКА
               </h1>
@@ -30,13 +30,14 @@ const Hero = () => {
                 <h4>Забудь о долгом ожидании!</h4>
               </div>
             </div>
-            <div className={scss.hero_img}>
+            <div data-aos="fade-up" className={scss.hero_img}>
               <Image src={hero_logo} alt="" />
+              <h4>Забудь о долгом ожидании!</h4>
             </div>
           </div>
         </div>
       </section>
-      <section id={scss.Hero2}>
+      <section data-aos="fade-up" id={scss.Hero2}>
         <div className="container">
           <div className={scss.block}>
             <div className={scss.box}>
