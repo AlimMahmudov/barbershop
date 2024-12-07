@@ -34,6 +34,26 @@
         line-height: 60px;
         color: #f6f6f6;
       }
+      .options {
+        width: 800px;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+
+        button {
+          font-size: 20px;
+          width: 110px;
+          height: 60px;
+          background: #1e1e1e;
+          color: #f6f6f6;
+          border-radius: 20px;
+          border: none;
+          &:focus {
+            background: #dd9700;
+          }
+        }
+      }
     }
   }
 }
@@ -451,6 +471,16 @@
         transition: 0.5s;
         background: #f6f6f6;
         color: #000;
+      }
+    }
+  }
+}
+
+#End {
+  .end {
+    color: #f6f6f6;
+    .results {
+      h1 {
       }
     }
   }

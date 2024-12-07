@@ -3,38 +3,44 @@ import { useEffect, useState } from "react";
 import scss from "./Date.module.scss";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-// import ReactDatePicker from "react-datepicker";
-// import Calendar from "react-calendar";
+
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
 import { data } from "@/shared/data/Data";
 
 interface IFormTelegram {
-  prices: string[];
+  num: string;
+  photo: string;
+  img: string;
+  title: string;
   name: string;
-  date: string;
+  price: string;
   time: string;
   nameUser: string;
   teleUser: string;
   emailUser: string;
+  work: string;
 }
 
 const DateComponent = () => {
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
   const [selectedOptions, setSelectedOptions] = useState({
-    date: "",
+    num: "",
+    photo: "",
+    img: "",
+    title: "",
     name: "",
-    prices: [],
+    price: "",
     time: "",
     nameUser: "",
     teleUser: "",
     emailUser: "",
+    work: "",
   });
   const [isClient, setIsClient] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
 
   useEffect(() => {
-    // Устанавливаем, что код рендерится на клиенте
     setIsClient(true);
   }, []);
 
@@ -42,9 +48,11 @@ const DateComponent = () => {
   const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
 
   const messageModel = (data: IFormTelegram) => {
-    let messageTG = `Price(s): <b>${data.prices.join(", ")}</b>\n`;
+    let messageTG = `Price(s): <b>${data.price}</b>\n`;
     messageTG += `Name: <b>${data.name}</b>\n`;
-    messageTG += `date: <b>${data.date}</b>\n`;
+    messageTG += `date: <b>${data.num}</b>\n`;
+    messageTG += `time: <b>${data.time}</b>\n`;
+    messageTG += `time: <b>${data.title}</b>\n`;
     messageTG += `time: <b>${data.time}</b>\n`;
     messageTG += `User Name: <b>${data.nameUser}</b>\n`;
     messageTG += `User Phone: <b>${data.teleUser}</b>\n`;
@@ -54,13 +62,17 @@ const DateComponent = () => {
 
   const sendMessageToTelegram = async () => {
     const selectedData: IFormTelegram = {
-      prices: selectedOptions.prices,
+      price: selectedOptions.price,
       name: selectedOptions.name,
-      date: selectedOptions.date,
+      num: selectedOptions.num,
       time: selectedOptions.time,
+      title: selectedOptions.title,
+      photo: selectedOptions.photo,
+      img: selectedOptions.img,
       nameUser: selectedOptions.nameUser,
       teleUser: selectedOptions.teleUser,
       emailUser: selectedOptions.emailUser,
+      work: selectedOptions.work,
     };
 
     await axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
@@ -70,26 +82,46 @@ const DateComponent = () => {
     });
     reset();
     setSelectedOptions({
-      date: "",
+      num: "",
+      photo: "",
+      img: "",
+      title: "",
       name: "",
-      prices: [],
+      price: "",
       time: "",
       nameUser: "",
       teleUser: "",
       emailUser: "",
+      work: "",
     });
     setCurrentStep(5);
   };
+  const handleOptionSelect = (
+    category: keyof IFormTelegram,
+    option: Partial<IFormTelegram> | string
+  ) => {
+    console.log("Selected category:", category);
+    console.log("Selected option:", option);
 
-  const handleOptionSelect = (category: string, value: string) => {
-    setSelectedOptions((prev) => ({
-      ...prev,
-      [category]: category === "prices" ? [...prev.prices, value] : value,
-    }));
+    if (typeof option === "string") {
+      setSelectedOptions((prev) => ({
+        ...prev,
+        [category]: option,
+      }));
+    } else {
+      setSelectedOptions((prev) => ({
+        ...prev,
+        [category]: option[category] || "",
+        img: option.img || prev.img || "",
+        title: option.title || prev.title || "",
+        photo: option.photo || prev.photo || "",
+        work: option.work || prev.work || "",
+      }));
+    }
   };
 
   const handleNextStep = () => {
-    if (currentStep === 0 && selectedOptions.date) {
+    if (currentStep === 0 && selectedOptions.num) {
       setCurrentStep(currentStep + 1);
     } else if (currentStep < 5) {
       setCurrentStep(currentStep + 1);
@@ -103,22 +135,9 @@ const DateComponent = () => {
       teleUser: data.teleUser,
       emailUser: data.emailUser,
     }));
-    handleNextStep(); // Переход на следующий шаг после ввода данных
+    handleNextStep();
   };
 
-  //   const handleDateChange = (date: any) => {
-  //     if (date && Array.isArray(date)) {
-  //       setSelectedOptions((prev) => ({
-  //         ...prev,
-  //         date: date[0].toISOString().split("T")[0],
-  //       }));
-  //     } else if (date) {
-  //       setSelectedOptions((prev) => ({
-  //         ...prev,
-  //         date: date.toISOString().split("T")[0],
-  //       }));
-  //     }
-  //   };
   return (
     <>
       {/* Section Date */}
@@ -141,15 +160,17 @@ const DateComponent = () => {
                   <div className={scss.line}></div>
                   <button>1</button>
                 </div>
-                {/* <Calendar
-                    onChange={handleDateChange}
-                    value={
-                      selectedOptions.date
-                        ? new Date(selectedOptions.date)
-                        : new Date()
-                    }
-                    className={scss.calendar}
-                  /> */}
+
+                <div className={scss.options}>
+                  {data[3]?.dates?.map((option, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleOptionSelect("num", option.num)}
+                    >
+                      {option.num}
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -181,10 +202,16 @@ const DateComponent = () => {
                   {data[0].names.map((option, idx) => (
                     <div
                       key={idx}
-                      onClick={() => handleOptionSelect("name", option.name)}
+                      onClick={() =>
+                        handleOptionSelect("name", {
+                          name: option.name,
+                          photo: option.photo, // Передаем photo
+                          work: option.work, // Передаем work
+                        })
+                      }
                       className={scss.box}
                     >
-                      <Image src={option.img} alt="" />
+                      <Image src={option.photo} alt={option.name} />
                       <h2>{option.name}</h2>
                       <h3>{option.work}</h3>
                     </div>
@@ -220,11 +247,17 @@ const DateComponent = () => {
                   {data[1].prices.map((option, idx) => (
                     <div
                       key={idx}
-                      onClick={() => handleOptionSelect("prices", option.price)}
+                      onClick={() =>
+                        handleOptionSelect("price", {
+                          price: option.price,
+                          img: option.img,
+                          title: option.title,
+                        })
+                      }
                       className={scss.box}
                     >
                       <Image src={option.img} alt="" />
-                      <h2>{option.name}</h2>
+                      <h2>{option.title}</h2>
                       <h3>{option.price}</h3>
                     </div>
                   ))}
@@ -396,13 +429,28 @@ const DateComponent = () => {
               <div className={scss.results}>
                 <h2>Итог:</h2>
                 <div>
-                  <p>date: {selectedOptions.date}</p>
+                  <p>date: {selectedOptions.num}</p>
                   <p>Name: {selectedOptions.name}</p>
-                  <p>Prices: {selectedOptions.prices.join(", ")}</p>
+                  <p>Prices: {selectedOptions.price}</p>
                   <p>time: {selectedOptions.time}</p>
                   <p>UserName: {selectedOptions.nameUser}</p>
                   <p>UserTel: {selectedOptions.teleUser}</p>
                   <p>UserEmail: {selectedOptions.emailUser}</p>
+                  <p>Title: {selectedOptions.title}</p>
+                  <p>Work: {selectedOptions.work}</p>
+
+                  <Image
+                    src={selectedOptions.img}
+                    alt=""
+                    width={500}
+                    height={500}
+                  />
+                  <Image
+                    src={selectedOptions.photo}
+                    alt=""
+                    width={500}
+                    height={500}
+                  />
                 </div>
                 <button onClick={sendMessageToTelegram}>
                   Отправить в Telegram
