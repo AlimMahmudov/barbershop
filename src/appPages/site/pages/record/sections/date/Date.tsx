@@ -7,6 +7,7 @@ import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import Image from "next/image";
 import { data } from "@/shared/data/Data";
+import { useRouter } from "next/navigation";
 
 interface IFormTelegram {
   num: string;
@@ -23,6 +24,7 @@ interface IFormTelegram {
 }
 
 const DateComponent = () => {
+  const router = useRouter();
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
   const [selectedOptions, setSelectedOptions] = useState({
     num: "",
@@ -427,34 +429,81 @@ const DateComponent = () => {
           <div className={scss.end}>
             {currentStep === 5 && (
               <div className={scss.results}>
-                <h2>Итог:</h2>
-                <div>
-                  <p>date: {selectedOptions.num}</p>
-                  <p>Name: {selectedOptions.name}</p>
-                  <p>Prices: {selectedOptions.price}</p>
-                  <p>time: {selectedOptions.time}</p>
-                  <p>UserName: {selectedOptions.nameUser}</p>
-                  <p>UserTel: {selectedOptions.teleUser}</p>
-                  <p>UserEmail: {selectedOptions.emailUser}</p>
-                  <p>Title: {selectedOptions.title}</p>
-                  <p>Work: {selectedOptions.work}</p>
+                <h1>вы записаны!</h1>
+                <div className={scss.block}>
+                  <div className={scss.box}>
+                    <h2>Барбер:</h2>
+                    <div className={scss.box_text}>
+                      <Image
+                        src={selectedOptions.photo}
+                        alt=""
+                        width={50}
+                        height={50}
+                      />
+                      <div className={scss.box_h1}>
+                        <p>{selectedOptions.work}</p>
+                        <p>{selectedOptions.name}</p>
+                      </div>
+                    </div>
+                  </div>
 
-                  <Image
-                    src={selectedOptions.img}
-                    alt=""
-                    width={500}
-                    height={500}
-                  />
-                  <Image
-                    src={selectedOptions.photo}
-                    alt=""
-                    width={500}
-                    height={500}
-                  />
+                  <div className={scss.box}>
+                    <h2>Дата:</h2>
+                    <div className={scss.box_text}>
+                      <div className={scss.box_h1}>
+                        <p>{selectedOptions.num}/12/2024</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={scss.box}>
+                    <h2>Время:</h2>
+                    <div className={scss.box_text}>
+                      <div className={scss.box_h1}>
+                        <p>{selectedOptions.time} часов</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={scss.box}>
+                    <h2>Услуга:</h2>
+                    <div className={scss.box_text}>
+                      <Image
+                        src={selectedOptions.img}
+                        alt=""
+                        width={50}
+                        height={50}
+                      />
+                      <div className={scss.box_h1}>
+                        <p>{selectedOptions.title}</p>
+                        <p>{selectedOptions.price} сом</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={scss.box}>
+                    <h2>Ваши данные</h2>
+                    <div className={scss.box_text}>
+                      <div className={scss.box_h1}>
+                        <p>{selectedOptions.nameUser}</p>
+                        <p>{selectedOptions.teleUser}</p>
+                        <p>{selectedOptions.emailUser}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <button onClick={sendMessageToTelegram}>
-                  Отправить в Telegram
-                </button>
+                <div className={scss.buttons}>
+                  <button
+                    onClick={async () => {
+                      await router.push("/");
+                      sendMessageToTelegram();
+                    }}
+                  >
+                    Отправить в Telegram
+                  </button>
+                  <button onClick={() => router.push("/")}>
+                    Отменить запись
+                  </button>
+                </div>
               </div>
             )}
           </div>
