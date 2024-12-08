@@ -207,6 +207,7 @@
           border-radius: 10px;
           transition: all 0.3s;
           background: #222222;
+          border: none;
 
           &:hover {
             transform: scale(1.05);
@@ -232,7 +233,7 @@
             color: #f6f6f6;
           }
           &:focus {
-            background: #383838;
+            background: #616161;
           }
         }
       }
@@ -392,6 +393,7 @@
           text-align: center;
           justify-content: space-between;
           padding: 15px;
+          border: none;
           cursor: pointer;
           transition: all 0.3s;
           &:hover {
@@ -400,7 +402,7 @@
             background: #dfdfdf;
           }
           &:focus {
-            background: #383838;
+            background: #ffae00;
           }
 
           h2 {
@@ -794,6 +796,7 @@
               border-radius: 10px;
               border: solid 2px #f6f6f6;
               background: none;
+              color: #fff;
               outline: none;
               padding: 10px;
               font-size: 20px;

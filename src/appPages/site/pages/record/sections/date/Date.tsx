@@ -237,7 +237,7 @@ const DateComponent = () => {
 
                 <div className={scss.options}>
                   {data[0].names.map((option, idx) => (
-                    <div
+                    <button
                       key={idx}
                       onClick={() =>
                         handleOptionSelect("name", {
@@ -251,7 +251,7 @@ const DateComponent = () => {
                       <Image src={option.photo} alt={option.name} />
                       <h2>{option.name}</h2>
                       <h3>{option.work}</h3>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -296,7 +296,7 @@ const DateComponent = () => {
                 </div>
                 <div className={scss.options}>
                   {data[1].prices.map((option, idx) => (
-                    <div
+                    <button
                       key={idx}
                       onClick={() =>
                         handleOptionSelect("price", {
@@ -310,7 +310,7 @@ const DateComponent = () => {
                       <Image src={option.img} alt="" />
                       <h2>{option.title}</h2>
                       <h3>{option.price}</h3>
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -569,6 +569,9 @@ const DateComponent = () => {
                   </div>
                 </div>
                 <div className={scss.buttons}>
+                  <button onClick={() => router.push("/")}>
+                    Отменить запись
+                  </button>
                   <button
                     onClick={async () => {
                       await router.push("/thankYou");
@@ -576,9 +579,6 @@ const DateComponent = () => {
                     }}
                   >
                     Отправить в Telegram
-                  </button>
-                  <button onClick={() => router.push("/")}>
-                    Отменить запись
                   </button>
                 </div>
               </div>
