@@ -1,18 +1,18 @@
-// import { create } from "zustand";
+import { create } from "zustand";
 
-// interface LanguageStore {
-//   language: "ru" | "kg" | "en";
-//   translate: (language: "ru" | "kg" | "en") => void;
-//   t: (ky: string, ru: string, en: string) => string;
-// }
+interface LanguageStore {
+  language: "ru" | "kg" | "en";
+  setLanguage: (language: "ru" | "kg" | "en") => void;
+  translate: (ru: string, kg: string, en: string) => string;
+}
 
-// export const useLanguageStore = create<LanguageStore>((set, get) => ({
-//   language: "ru",
-//   translate: (language: "ru" | "kg" | "en") => set({ language }),
-//   t: (kg: string, ru: string, en: string) => {
-//     const currentLanguage = get().language;
-//     if (currentLanguage === "kg") return kg;
-//     if (currentLanguage === "en") return en;
-//     return ru;
-//   },
-// }));
+export const useLanguageStore = create<LanguageStore>((set, get) => ({
+  language: "ru",
+  setLanguage: (language: "ru" | "kg" | "en") => set({ language }),
+  translate: (ru: string, kg: string, en: string) => {
+    const blablaLanguage = get().language;
+    if (blablaLanguage === "kg") return kg;
+    if (blablaLanguage === "en") return en;
+    return ru;
+  },
+}));

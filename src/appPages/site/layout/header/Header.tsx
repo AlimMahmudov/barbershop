@@ -1,35 +1,3 @@
-// import scss from "./Header.module.scss";
-// import logo from "@/shared/assets/images/logo.svg";
-// import Image from "next/image";
-// import { LuPhoneCall } from "react-icons/lu";
-
-// const Header = () => {
-//   return (
-//     <header id={scss.Header}>
-//       <div className="container">
-//         <div className={scss.header}>
-//           <div className={scss.block}>
-//             <Image src={logo} alt="" />
-//             <div className={scss.box}>
-//               <div className={scss.teg}>
-//                 <a href="">Стрижки</a>
-//                 <a href="">награды</a>
-//                 <a href="">Отзывы</a>
-//               </div>
-//               <button>
-//                 <LuPhoneCall /> +996 708 000 000
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-/////////////////
 "use client";
 import scss from "../header/Header.module.scss";
 import BurgerMenu from "./BurgerMenu";
@@ -39,30 +7,32 @@ import Link from "next/link";
 import logo from "@/shared/assets/images/logo.svg";
 import { LuPhoneCall } from "react-icons/lu";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useLanguageStore } from "@/shared/stores/Language";
 // import { useLanguageStore } from "@/shared/stores/Language";
 
 const Header = () => {
+  const { translate, setLanguage } = useLanguageStore();
+
+  const handleLanguage = (lang: "ru" | "kg" | "en") => {
+    setLanguage(lang);
+  };
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const { translate } = useLanguageStore();
 
   const links = [
     {
-      // name: translate("Стрижки", "Стрижки", "Стрижки"),
-      name: "Стрижки",
+      name: translate("Стрижки", "Чач кыркуу", "Haircuts"),
       link: "/record/",
     },
     {
-      name: "награды",
+      name: translate("Награды", "Сыйлыктар", "Awards"),
       link: "/",
     },
-
     {
-      name: "Отзывы",
+      name: translate("Отзывы", "Пикирлер", "Reviews"),
       link: "/",
     },
   ];
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1000);
     window.addEventListener("resize", handleResize);
@@ -98,10 +68,14 @@ const Header = () => {
           ) : (
             <>
               <div className={scss.buutons}>
-                <select>
-                  <option value="">RU</option>
-                  <option value="">KG</option>
-                  <option value="">EN</option>
+                <select
+                  onChange={(e) =>
+                    handleLanguage(e.target.value as "ru" | "kg" | "en")
+                  }
+                >
+                  <option value="ru">RU</option>
+                  <option value="kg">KG</option>
+                  <option value="en">EN</option>
                 </select>
                 <button>
                   <LuPhoneCall /> +996 708 000 000

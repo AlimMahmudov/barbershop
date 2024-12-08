@@ -6,39 +6,42 @@ import { FaInstagram } from "react-icons/fa";
 import barber from "@/shared/assets/images/barber.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-const data = [
-  {
-    id: 1,
-    name: "Макс Корж",
-    barber: "Топ-барбер",
-    img: barber,
-  },
-  {
-    id: 2,
-    name: "Макс Корж",
-    barber: "Топ-барбер",
-    img: barber,
-  },
-  {
-    id: 3,
-    name: "Макс Корж",
-    barber: "Топ-барбер",
-    img: barber,
-  },
-  {
-    id: 4,
-    name: "Макс Корж",
-    barber: "Топ-барбер",
-    img: barber,
-  },
-];
+import { useLanguageStore } from "@/shared/stores/Language";
 
 const Master = () => {
+  const { translate } = useLanguageStore();
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
   const router = useRouter();
+
+  const data = [
+    {
+      id: 1,
+      name: translate("Макс Корж", "Макс Корж", "Max Korzh"),
+      barber: translate("Топ-барбер", "Топ-барбер", "Top barber"),
+      img: barber,
+    },
+    {
+      id: 2,
+      name: translate("Макс Корж", "Макс Корж", "Max Korzh"),
+      barber: translate("Топ-барбер", "Топ-барбер", "Top barber"),
+      img: barber,
+    },
+    {
+      id: 3,
+      name: translate("Макс Корж", "Макс Корж", "Max Korzh"),
+      barber: translate("Топ-барбер", "Топ-барбер", "Top barber"),
+      img: barber,
+    },
+    {
+      id: 4,
+      name: translate("Макс Корж", "Макс Корж", "Max Korzh"),
+      barber: translate("Топ-барбер", "Топ-барбер", "Top barber"),
+      img: barber,
+    },
+  ];
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (scrollRef.current) {
@@ -59,14 +62,30 @@ const Master = () => {
   const handleMouseUpOrLeave = () => {
     isDragging.current = false;
   };
+
   return (
     <div id={scss.Master}>
       <div className="container">
         <div className={scss.master}>
-          <h1>Команда профессионалов</h1>
+          <h1>
+            {translate(
+              "Команда профессионалов",
+              "Кесипкөй команда",
+              "Team of professionals"
+            )}
+          </h1>
           <h2>
-            Наша команда – это сплоченный коллектив <span>опытных</span>
-            барберов, каждый из которых – настоящий мастер своего дела.
+            {translate(
+              "Наша команда – это сплоченный коллектив ",
+              "Биздин команда бул ынтымактуу жамаат ",
+              "Our team is a close-knit group of "
+            )}
+            <span>{translate("опытных", "тажрыйбалуу", "experienced")}</span>{" "}
+            {translate(
+              "барберов, каждый из которых – настоящий мастер своего дела.",
+              "барберлер, ар бири өз ишинин чыныгы чебери.",
+              "barbers, each of whom is a true master of their craft."
+            )}
           </h2>
           <div className={scss.block}>
             <div
@@ -98,9 +117,19 @@ const Master = () => {
               className={scss.want}
             >
               <div className={scss.want_box}>
-                <h1>Хочешь к нам в команду?</h1>
+                <h1>
+                  {translate(
+                    "Хочешь к нам в команду?",
+                    "Биздин командага кошулгуң келеби?",
+                    "Want to join our team?"
+                  )}
+                </h1>
                 <p>
-                  Присылай резюме
+                  {translate(
+                    "Присылай резюме",
+                    "Резюмеңизди жибериңиз",
+                    "Send your resume"
+                  )}
                   <span>
                     <FaArrowRight />
                   </span>

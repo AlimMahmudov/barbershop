@@ -155,7 +155,7 @@ const Services = () => {
   const selectedData = data.find((el) => el.type === selectedType);
 
   return (
-    <div data-aos="fade-up"  id={scss.Services}>
+    <div data-aos="fade-up" id={scss.Services}>
       <div className="container">
         <div className={scss.services}>
           <div className={scss.services_text}>
@@ -174,8 +174,13 @@ const Services = () => {
           </div>
           <div className={scss.block}>
             {selectedData?.box.map((item, idx) => (
-              <div key={idx} data-aos="fade-up" data-aos-delay={idx * 200} className={scss.box}>
-                <div   className={scss.num}>
+              <div
+                key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 200}
+                className={scss.box}
+              >
+                <div className={scss.num}>
                   <h1>{item.num}</h1>
                   <h1>{item.name}</h1>
                 </div>
