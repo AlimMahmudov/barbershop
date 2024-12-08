@@ -110,18 +110,14 @@
         height: 600px;
         border-radius: 20px;
         background: none;
-        position: relative;
         z-index: -1;
 
         background-color: #000; /* Черный фон для карты */
         filter: grayscale(100%) brightness(30%); /* Затемнение карты */
       }
       .map_text {
-        position: relative;
         z-index: 1;
         width: 420px;
-        // top: 5832px;
-        // left: 102px;
         gap: 0px;
         border-radius: 20px;
         opacity: 0px;
@@ -274,14 +270,14 @@
           height: 300px;
           border-radius: 20px;
           background: none;
-          position: relative;
+          // position: relative;
           z-index: -1;
 
           background-color: #000;
           filter: grayscale(80%) brightness(70%);
         }
         .map_text {
-          position: relative;
+          // position: relative;
           z-index: 1;
           width: 90%;
           gap: 0px;
