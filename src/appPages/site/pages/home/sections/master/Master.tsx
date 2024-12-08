@@ -5,6 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import barber from "@/shared/assets/images/barber.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 const data = [
   {
     id: 1,
@@ -37,6 +38,7 @@ const Master = () => {
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+  const router = useRouter();
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (scrollRef.current) {
@@ -91,7 +93,10 @@ const Master = () => {
                 </div>
               ))}
             </div>
-            <div className={scss.want}>
+            <div
+              onClick={() => router.push("/newMaster")}
+              className={scss.want}
+            >
               <div className={scss.want_box}>
                 <h1>Хочешь к нам в команду?</h1>
                 <p>
