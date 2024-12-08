@@ -8,9 +8,11 @@ import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { SlSocialTwitter } from "react-icons/sl";
 import { useLanguageStore } from "@/shared/stores/Language"; // Импортируем useLanguageStore для использования translate
+import { useRouter } from "next/navigation";
 
 const Map = () => {
   const { translate } = useLanguageStore();
+  const router = useRouter();
 
   return (
     <div id={scss.Map}>
@@ -30,7 +32,9 @@ const Map = () => {
                 </p>
               </div>
             </div>
-            <button>{translate("Записаться", "Катталыңыз", "Sign Up")}</button>
+            <button onClick={() => router.push("/record")}>
+              {translate("Записаться", "Катталыңыз", "Sign Up")}
+            </button>
           </div>
 
           <div className={scss.map_text_mob}>
