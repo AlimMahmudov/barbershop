@@ -182,6 +182,7 @@ const DateComponent = () => {
                     <FaCheck />
                   </button>
                 </div>
+                <h3>Декабрь</h3>
 
                 <div className={scss.options}>
                   {data[3]?.dates?.map((option, idx) => (
