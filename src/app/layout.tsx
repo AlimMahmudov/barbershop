@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+// import type { Metadata } from "next";
 import "./globals.scss";
 import LayoutSlice from "@/appPages/site/layout/LayoutSlice";
 import { gilroy } from "@/constants/fonts/fonts";

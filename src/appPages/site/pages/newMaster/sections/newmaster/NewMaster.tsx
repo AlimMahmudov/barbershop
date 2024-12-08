@@ -12,8 +12,10 @@ interface IFormTelegram {
 const NewMaster = () => {
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
 
-  const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
-  const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
+  //   const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
+  //   const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
+  //   NEXT_PUBLIC_TG_TOKEN=
+  // NEXT_PUBLIC_TG_CHAT_ID=-1002178370559
 
   const messageModel = (data: IFormTelegram) => {
     let messageTG = `Name: <b>${data.name}</b>\n`;
@@ -24,9 +26,9 @@ const NewMaster = () => {
 
   const onSubmit: SubmitHandler<IFormTelegram> = async (data) => {
     await axios.post(
-      `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TG_TOKEN}/sendMessage`,
+      `https://api.telegram.org/bot${"7350084863:AAGNHWJpQ7qif2WAAinzTBqVX3nwE-0sgbk"}/sendMessage`,
       {
-        chat_id: process.env.NEXT_PUBLIC_TG_CHAT_ID,
+        chat_id: -1002178370559,
         parse_mode: "html",
         text: messageModel(data),
       }
