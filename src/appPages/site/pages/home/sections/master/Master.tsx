@@ -5,24 +5,27 @@ import { FaArrowRight } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import barber from "@/shared/assets/images/barber.svg";
 import Image from "next/image";
-
 const data = [
   {
+    id: 1,
     name: "Макс Корж",
     barber: "Топ-барбер",
     img: barber,
   },
   {
+    id: 2,
     name: "Макс Корж",
     barber: "Топ-барбер",
     img: barber,
   },
   {
+    id: 3,
     name: "Макс Корж",
     barber: "Топ-барбер",
     img: barber,
   },
   {
+    id: 4,
     name: "Макс Корж",
     barber: "Топ-барбер",
     img: barber,
@@ -64,7 +67,8 @@ const Master = () => {
             барберов, каждый из которых – настоящий мастер своего дела.
           </h2>
           <div className={scss.block}>
-            <div 	data-aos="fade-up" 
+            <div
+              data-aos="fade-up"
               className={scss.review_scroll}
               ref={scrollRef}
               onMouseDown={handleMouseDown}
@@ -72,21 +76,19 @@ const Master = () => {
               onMouseUp={handleMouseUpOrLeave}
               onMouseLeave={handleMouseUpOrLeave}
             >
-              {data.map((el, index) => (
-                <>
-                  <div key={index} className={scss.box}>
-                    <div className={scss.box_text}>
-                      <div className={scss.box_h1}>
-                        <h1>{el.name}</h1>
-                        <p>{el.barber}</p>
-                      </div>
-                      <h2>
-                        <FaInstagram />
-                      </h2>
+              {data.map((el) => (
+                <div key={el.id} className={scss.box}>
+                  <div className={scss.box_text}>
+                    <div className={scss.box_h1}>
+                      <h1>{el.name}</h1>
+                      <p>{el.barber}</p>
                     </div>
-                    <Image data-aos="fade-up" src={el.img} alt="" />
+                    <h2>
+                      <FaInstagram />
+                    </h2>
                   </div>
-                </>
+                  <Image data-aos="fade-up" src={el.img} alt="" />
+                </div>
               ))}
             </div>
             <div className={scss.want}>

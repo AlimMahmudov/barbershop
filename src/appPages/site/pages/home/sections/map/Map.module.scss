@@ -1,6 +1,6 @@
 #Map {
   padding: 50px;
-  
+
   .map {
     display: flex;
     flex-direction: column;
@@ -45,11 +45,17 @@
         border: none;
         font-size: 20px;
         font-weight: 700;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: all 0.3s;
+          background: #ffc13a;
+        }
       }
     }
 
     .map_text_mob {
-
       position: relative;
       z-index: 1;
       width: 100%;
@@ -57,13 +63,12 @@
       border-radius: 20px;
       opacity: 0px;
       background: #000;
-      
+
       display: none;
       flex-direction: column;
       justify-content: space-between;
       padding: 20px;
       gap: 25px;
-
 
       h1 {
         font-family: Bebas Neue;
@@ -162,15 +167,14 @@
   }
 }
 
-
 @media (max-width: 500px) {
   #Map {
     padding: 50px 0;
-    
+
     .map {
       display: flex;
       flex-direction: column;
-  
+
       .text {
         display: flex;
         justify-content: space-between;
@@ -180,12 +184,12 @@
           display: flex;
           align-items: center;
           gap: 20px;
-  
+
           img {
             width: 80.54px;
             height: 100%;
           }
-  
+
           .logo_text {
             h1 {
               font-family: BERNIER Distressed;
@@ -223,8 +227,8 @@
         border-radius: 20px;
         opacity: 0px;
         background: #000;
-        
-        display: flex;
+
+        display: block;
         flex-direction: column;
         justify-content: space-between;
         padding: 20px;
@@ -272,9 +276,9 @@
           background: none;
           position: relative;
           z-index: -1;
-  
-          background-color: #000;  
-          filter: grayscale(80%) brightness(70%);  
+
+          background-color: #000;
+          filter: grayscale(80%) brightness(70%);
         }
         .map_text {
           position: relative;
@@ -292,7 +296,7 @@
           padding: 20px;
           gap: 25px;
           display: none;
-  
+
           h1 {
             font-family: Bebas Neue;
             font-size: 30px;
@@ -301,7 +305,7 @@
             color: #dd9700;
             width: 260px;
           }
-  
+
           p {
             font-family: Arial;
             font-size: 14px;
@@ -322,10 +326,6 @@
           }
         }
       }
-     
     }
   }
-  
 }
-
- 
