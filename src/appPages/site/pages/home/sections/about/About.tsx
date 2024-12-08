@@ -1,3 +1,4 @@
+"use client";
 import scss from "./About.module.scss";
 import img from "@/shared/assets/images/About_img.svg";
 import img2 from "@/shared/assets/images/About_img2.svg";

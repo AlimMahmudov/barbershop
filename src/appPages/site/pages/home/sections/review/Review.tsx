@@ -5,6 +5,7 @@ import scss from "./Review.module.scss";
 import img from "@/shared/assets/images/video-img.png";
 import Image from "next/image";
 import { FaRegPlayCircle } from "react-icons/fa";
+import { useLanguageStore } from "@/shared/stores/Language";
 
 const Review = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -71,12 +72,13 @@ const Review = () => {
     setIsModalOpen(false);
     setCurrentVideo(null);
   };
+  const { translate } = useLanguageStore();
 
   return (
     <div id={scss.Review}>
       <div className="container">
         <div className={scss.review}>
-          <h1>ОТЗЫВЫ</h1>
+          <h1>{translate("ВИДЕО", "ВИДЕОЛОР", "VIDEOS")}</h1>
           <div
             className={scss.review_scroll}
             data-aos="fade-up"
@@ -84,9 +86,10 @@ const Review = () => {
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUpOrLeave}
-            onMouseLeave={handleMouseUpOrLeave}>
+            onMouseLeave={handleMouseUpOrLeave}
+          >
             {data.map((el, index) => (
-              <div   key={index}  className={scss.box}>
+              <div key={index} className={scss.box}>
                 <Image src={el.img} alt="img" />
                 <h2 onClick={() => openModal(el.video)}>
                   <FaRegPlayCircle />
@@ -99,7 +102,7 @@ const Review = () => {
 
       {/* Модальное окно */}
       {isModalOpen && currentVideo && (
-        <div  className={scss.modal}>
+        <div className={scss.modal}>
           <div data-aos="zoom-in" className={scss.modalContent}>
             <button className={scss.closeButton} onClick={closeModal}>
               ×

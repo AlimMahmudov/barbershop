@@ -2,6 +2,7 @@
 import scss from "./NewMaster.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
+import { useLanguageStore } from "@/shared/stores/Language";
 
 interface IFormTelegram {
   name: string;
@@ -10,12 +11,8 @@ interface IFormTelegram {
 }
 
 const NewMaster = () => {
+  const { translate } = useLanguageStore();
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
-
-  //   const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
-  //   const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
-  //   NEXT_PUBLIC_TG_TOKEN=
-  // NEXT_PUBLIC_TG_CHAT_ID=-1002178370559
 
   const messageModel = (data: IFormTelegram) => {
     let messageTG = `Name: <b>${data.name}</b>\n`;
@@ -35,38 +32,63 @@ const NewMaster = () => {
     );
     reset();
   };
+
   return (
     <div id={scss.New}>
       <div className="container">
         <div className={scss.new}>
-          <h1>ОТПРАВЬТЕ НАМ ДАННЫЕ</h1>
+          <h1>
+            {translate(
+              "ОТПРАВЬТЕ НАМ ДАННЫЕ",
+              "МАЛЫМ ДАННЫЛАРДЫ ЖИБЕРИҢИЗ",
+              "SEND US YOUR DATA"
+            )}
+          </h1>
           <div className={scss.telegram}>
             <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
               <div className={scss.inputs}>
-                <p>Имя *</p>
+                <p>{translate("Имя *", "Аты *", "Name *")}</p>
                 <input
                   {...register("name", { required: true })}
                   type="text"
-                  placeholder="Введите своё имя"
+                  placeholder={translate(
+                    "Введите своё имя",
+                    "Атыңызды жазыңыз",
+                    "Enter your name"
+                  )}
                 />
               </div>
               <div className={scss.inputs}>
-                <p>Телефон *</p>
+                <p>{translate("Телефон *", "Телефон *", "Phone *")}</p>
                 <input
                   {...register("number", { required: true })}
                   type="text"
-                  placeholder="Введите свой номер"
+                  placeholder={translate(
+                    "Введите свой номер",
+                    "Телефон нөмүрүңүздү жазыңыз",
+                    "Enter your number"
+                  )}
                 />
               </div>
               <div className={scss.inputs}>
-                <p>Pезюме</p>
+                <p>{translate("Pезюме", "Резюме", "Resume")}</p>
                 <input
                   {...register("message", { required: true })}
                   type="text"
-                  placeholder="Оставь резюме"
+                  placeholder={translate(
+                    "Оставь резюме",
+                    "Резюме жазыңыз",
+                    "Leave a resume"
+                  )}
                 />
               </div>
-              <button type="submit">Отправить данные</button>
+              <button type="submit">
+                {translate(
+                  "Отправить данные",
+                  "Далилдерди жиберүү",
+                  "Submit Data"
+                )}
+              </button>
             </form>
           </div>
         </div>

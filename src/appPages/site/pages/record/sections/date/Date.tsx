@@ -14,6 +14,7 @@ import { TbRazorElectric } from "react-icons/tb";
 import { IoMan } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
+import { useLanguageStore } from "@/shared/stores/Language";
 
 interface IFormTelegram {
   num: string;
@@ -30,6 +31,7 @@ interface IFormTelegram {
 }
 
 const DateComponent = () => {
+  const { translate } = useLanguageStore();
   const router = useRouter();
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
   const [selectedOptions, setSelectedOptions] = useState({
@@ -154,7 +156,13 @@ const DateComponent = () => {
           <div className={scss.date}>
             {currentStep === 0 && isClient && (
               <div className={scss.category}>
-                <h1>Укажите дату</h1>
+                <h1>
+                  {translate(
+                    "Укажите дату",
+                    "Күндү көрсөтүңүз",
+                    "Specify the date"
+                  )}
+                </h1>
                 <div className={scss.buttons}>
                   <button
                     style={{
@@ -182,7 +190,7 @@ const DateComponent = () => {
                     <FaCheck />
                   </button>
                 </div>
-                <h3>Декабрь</h3>
+                <h3>{translate("Декабрь", "Декабрь", "December")}</h3>
 
                 <div className={scss.options}>
                   {data[3]?.dates?.map((option, idx) => (
@@ -206,7 +214,13 @@ const DateComponent = () => {
           <div className={scss.name}>
             {currentStep === 1 && data[0]?.names && (
               <div className={scss.category}>
-                <h1>выберите специалиста</h1>
+                <h1>
+                  {translate(
+                    "выберите специалиста",
+                    "Адисти тандаңыз",
+                    "Choose a specialist"
+                  )}
+                </h1>
                 <div className={scss.buttons}>
                   <button>
                     <CiCalendarDate />
@@ -266,7 +280,13 @@ const DateComponent = () => {
           <div className={scss.price}>
             {currentStep === 2 && data[1]?.prices && (
               <div className={scss.category}>
-                <h1>выберите услуги</h1>
+                <h1>
+                  {translate(
+                    "выберите услуги",
+                    "Кызматтарды тандаңыз",
+                    "Choose services"
+                  )}
+                </h1>
                 <div className={scss.buttons}>
                   <button>
                     <CiCalendarDate />
@@ -325,7 +345,13 @@ const DateComponent = () => {
           <div className={scss.time}>
             {currentStep === 3 && data[2]?.time && (
               <div className={scss.category}>
-                <h1>укажите время</h1>
+                <h1>
+                  {translate(
+                    "укажите время",
+                    "Убакытты көрсөтүңүз",
+                    "Specify the time"
+                  )}
+                </h1>
                 <div className={scss.buttons}>
                   <button>
                     <CiCalendarDate />
@@ -357,7 +383,7 @@ const DateComponent = () => {
                 <div className={scss.block}>
                   {data[2].time[0].utro && (
                     <div className={scss.options}>
-                      <h2>Утро</h2>
+                      <h2>{translate("Утро", "Таң", "Morning")}</h2>
                       {data[2].time[0].utro.map((option, idx) => (
                         <button
                           key={idx}
@@ -375,7 +401,7 @@ const DateComponent = () => {
                   {/* Afternoon times */}
                   {data[2].time[1].day && (
                     <div className={scss.options}>
-                      <h2>День</h2>
+                      <h2>{translate("День", "Күн", "Day")}</h2>
                       <div className={scss.options2}>
                         {data[2].time[1].day.map((option, idx) => (
                           <button
@@ -395,7 +421,7 @@ const DateComponent = () => {
                   {/* Evening times */}
                   {data[2].time[2].vech && (
                     <div className={scss.options}>
-                      <h2>Вечер</h2>
+                      <h2>{translate("Вечер", "Кеч", "Evening")}</h2>
                       {data[2].time[2].vech.map((option, idx) => (
                         <button
                           key={idx}
@@ -422,7 +448,13 @@ const DateComponent = () => {
           <div className={scss.user}>
             {currentStep === 4 && (
               <div className={scss.category}>
-                <h1>введите ваши данные</h1>
+                <h1>
+                  {translate(
+                    "введите ваши данные",
+                    "Маалыматтарыңызды киргизиңиз",
+                    "Enter your data"
+                  )}
+                </h1>
                 <div className={scss.buttons}>
                   <button>
                     <CiCalendarDate />
@@ -456,26 +488,38 @@ const DateComponent = () => {
                 >
                   <div className={scss.input_box}>
                     <div className={scss.inputs}>
-                      <p>Имя *</p>
+                      <p>{translate("Имя *", "Аты *", "Name *")}</p>
                       <input
                         type="text"
-                        placeholder="Введите своё имя"
+                        placeholder={translate(
+                          "Введите своё имя",
+                          "Атыңызды жазыңыз",
+                          "Enter your name"
+                        )}
                         {...register("nameUser", { required: true })}
                       />
                     </div>
                     <div className={scss.inputs}>
-                      <p>Телефон *</p>
+                      <p>{translate("Телефон *", "Телефон *", "Phone *")}</p>
                       <input
                         type="text"
-                        placeholder="Введите свой номер"
+                        placeholder={translate(
+                          "Введите свой номер",
+                          "Телефон нөмүрүңүздү жазыңыз",
+                          "Enter your number"
+                        )}
                         {...register("teleUser", { required: true })}
                       />
                     </div>
                     <div className={scss.inputs}>
-                      <p>Email</p>
+                      <p>{translate("Email", "Электрондук почта", "Email")}</p>
                       <input
                         type="email"
-                        placeholder="Введите свою почту"
+                        placeholder={translate(
+                          "Введите свою почту",
+                          "Электрондук почтаңызды жазыңыз",
+                          "Enter your email"
+                        )}
                         {...register("emailUser", { required: true })}
                       />
                     </div>
@@ -486,11 +530,11 @@ const DateComponent = () => {
                         onClick={() => setCurrentStep(currentStep - 1)}
                         className={scss.prevButton}
                       >
-                        Назад
+                        {translate("Назад", "Артка", "Back")}
                       </button>
                     )}
                     <button type="submit" className={scss.nextButton}>
-                      Next Step
+                      {translate("Next Step", "Кийинки кадам", "Next Step")}
                     </button>
                   </div>
                 </form>
@@ -506,10 +550,16 @@ const DateComponent = () => {
           <div className={scss.end}>
             {currentStep === 5 && (
               <div className={scss.results}>
-                <h1>вы записаны!</h1>
+                <h1>
+                  {translate(
+                    "вы записаны!",
+                    "Сиз катталдыңыз!",
+                    "You are registered!"
+                  )}
+                </h1>
                 <div className={scss.block}>
                   <div className={scss.box}>
-                    <h2>Барбер:</h2>
+                    <h2>{translate("Барбер:", "Барбер:", "Barber:")}</h2>
                     <div className={scss.box_text}>
                       <Image
                         src={selectedOptions.photo}
@@ -525,7 +575,7 @@ const DateComponent = () => {
                   </div>
 
                   <div className={scss.box}>
-                    <h2>Дата:</h2>
+                    <h2>{translate("Дата:", "Дата:", "Date:")}</h2>
                     <div className={scss.box_text}>
                       <div className={scss.box_h1}>
                         <p>{selectedOptions.num}/12/2024</p>
@@ -534,7 +584,7 @@ const DateComponent = () => {
                   </div>
 
                   <div className={scss.box}>
-                    <h2>Время:</h2>
+                    <h2>{translate("Время:", "Убакыт:", "Time:")}</h2>
                     <div className={scss.box_text}>
                       <div className={scss.box_h1}>
                         <p>{selectedOptions.time} часов</p>
@@ -543,7 +593,7 @@ const DateComponent = () => {
                   </div>
 
                   <div className={scss.box}>
-                    <h2>Услуга:</h2>
+                    <h2>{translate("Услуга:", "Кызмат:", "Service:")}</h2>
                     <div className={scss.box_text}>
                       <Image
                         src={selectedOptions.img}
@@ -558,7 +608,13 @@ const DateComponent = () => {
                     </div>
                   </div>
                   <div className={scss.box}>
-                    <h2>Ваши данные</h2>
+                    <h2>
+                      {translate(
+                        "Ваши данные",
+                        "Сиздин маалыматтарыңыз",
+                        "Your data"
+                      )}
+                    </h2>
                     <div className={scss.box_text}>
                       <div className={scss.box_h1}>
                         <p>{selectedOptions.nameUser}</p>
@@ -570,7 +626,11 @@ const DateComponent = () => {
                 </div>
                 <div className={scss.buttons}>
                   <button onClick={() => router.push("/")}>
-                    Отменить запись
+                    {translate(
+                      "Отменить запись",
+                      "Каттоодон баш тартуу",
+                      "Cancel registration"
+                    )}
                   </button>
                   <button
                     onClick={async () => {
@@ -578,7 +638,11 @@ const DateComponent = () => {
                       sendMessageToTelegram();
                     }}
                   >
-                    Отправить в Telegram
+                    {translate(
+                      "Отправить в Telegram",
+                      "Telegram'ге жиберүү",
+                      "Send to Telegram"
+                    )}
                   </button>
                 </div>
               </div>
@@ -597,12 +661,12 @@ const DateComponent = () => {
                   onClick={() => setCurrentStep(currentStep - 1)}
                   className={scss.prevButton}
                 >
-                  Назад
+                  {translate("Назад", "Артка", "Back")}
                 </button>
               )}
               {currentStep < 4 && (
                 <button onClick={handleNextStep} className={scss.nextButton}>
-                  Next Step
+                  {translate("Следующий шаг", "Кийинки кадам", "Next Step")}
                 </button>
               )}
             </div>

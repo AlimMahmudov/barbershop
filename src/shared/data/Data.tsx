@@ -1,3 +1,4 @@
+"use client";
 import man from "@/shared/assets/images/man.svg";
 import man2 from "@/shared/assets/images/man2.svg";
 import man3 from "@/shared/assets/images/man3.svg";
@@ -19,33 +20,37 @@ interface DatesOption {
 }
 
 interface TimeOption {
-  oclo: string; // Время
+  oclo: string;
 }
 
 interface NameOption {
-  photo: string; // Путь к изображению
-  name: string; // Имя
-  work: string; // Работа
+  photo: string;
+  name: string;
+  work: string;
 }
 
 interface PriceOption {
-  img: string; // Путь к изображению
-  title: string; // Название услуги
-  price: string; // Цена
+  img: string;
+  title: string;
+  price: string;
 }
 
 interface TimeCategory {
-  utro?: TimeOption[]; // Утренние интервалы
-  day?: TimeOption[]; // Дневные интервалы
-  vech?: TimeOption[]; // Вечерние интервалы
+  utro?: TimeOption[];
+  day?: TimeOption[];
+  vech?: TimeOption[];
 }
 
 interface Data {
-  names?: NameOption[]; // Барберы
-  prices?: PriceOption[]; // Услуги и цены
-  time?: TimeCategory[]; // Интервалы времени
-  dates?: DatesOption[]; // Даты
+  names?: NameOption[];
+  prices?: PriceOption[];
+  time?: TimeCategory[];
+  dates?: DatesOption[];
 }
+
+// interface TimeOption {
+//     oclo: string; // Время
+//   }
 
 export const data: Data[] = [
   {
@@ -154,7 +159,3 @@ export const data: Data[] = [
     ],
   },
 ];
-
-// interface TimeOption {
-//     oclo: string; // Время
-//   }
