@@ -571,7 +571,7 @@ const DateComponent = () => {
                 <div className={scss.buttons}>
                   <button
                     onClick={async () => {
-                      await router.push("/");
+                      await router.push("/thankYou");
                       sendMessageToTelegram();
                     }}
                   >
