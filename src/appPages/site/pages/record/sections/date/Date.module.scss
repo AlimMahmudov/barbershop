@@ -427,6 +427,7 @@
 
 @media (max-width: 500px) {
   #Price {
+    padding-top: 30px;
     .price {
       display: flex;
       flex-direction: column;
@@ -465,7 +466,7 @@
           font-family: Bebas Neue;
           font-size: 30px;
           font-weight: 700;
-          line-height: 60px;
+          line-height: 30px;
           color: #f6f6f6;
         }
         .options {
