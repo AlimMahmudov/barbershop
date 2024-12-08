@@ -16,7 +16,7 @@
   border: solid rgb(31, 31, 31) 4px;
 
   transition: 0.5s;
-  color: white; 
+  color: white;
 
   &.active {
     right: 0px;
@@ -26,12 +26,15 @@
 }
 
 .content {
+  display: flex;
+
   color: white;
 
   .nav {
     color: white;
     display: flex;
     flex-direction: column;
+
     gap: 30px;
     text-align: start;
 
@@ -41,7 +44,33 @@
       font-size: 20px;
       color: white;
     }
-    
+    select {
+      background: #000000bd;
+      width: 100%;
+      border-radius: 10px;
+      color: #ffffff;
+      border: solid #dd9700 3px;
+      font-size: 18px;
+      outline: none;
+      transition: all 0.3s;
+
+      &:hover {
+        transition: all 0.3s;
+        background: #dd9700;
+        color: #000;
+      }
+
+      option {
+        text-align: center;
+        background: #000000;
+        color: #ffffff;
+        font-size: 16px;
+        border: none;
+
+        &:checked {
+          background: #dd9700; // Цвет выбранной опции
+        }
+      }
+    }
   }
 }
-  

@@ -1,4 +1,3 @@
-"use client";
 import scss from "../header/Header.module.scss";
 import BurgerMenu from "./BurgerMenu";
 import { useEffect, useState } from "react";
@@ -8,7 +7,6 @@ import logo from "@/shared/assets/images/logo.svg";
 import { LuPhoneCall } from "react-icons/lu";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useLanguageStore } from "@/shared/stores/Language";
-// import { useLanguageStore } from "@/shared/stores/Language";
 
 const Header = () => {
   const { translate, setLanguage } = useLanguageStore();
@@ -16,6 +14,7 @@ const Header = () => {
   const handleLanguage = (lang: "ru" | "kg" | "en") => {
     setLanguage(lang);
   };
+
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,14 +32,16 @@ const Header = () => {
       link: "/",
     },
   ];
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 1000);
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => {
-      window.addEventListener("resize", handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <header className={scss.header}>
       <div className="container">
@@ -63,7 +64,11 @@ const Header = () => {
               <button className={scss.bur} onClick={() => setIsOpen(!isOpen)}>
                 <GiHamburgerMenu />
               </button>
-              <BurgerMenu links={links} isOpen={isOpen} />
+              <BurgerMenu
+                links={links}
+                isOpen={isOpen}
+                handleLanguage={handleLanguage} // Передаем handleLanguage
+              />
             </>
           ) : (
             <>
