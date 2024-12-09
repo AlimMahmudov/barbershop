@@ -234,7 +234,7 @@
             color: #f6f6f6;
           }
           &:focus {
-            background: #616161;
+            background: #dd9700;
           }
         }
       }
@@ -307,7 +307,7 @@
             &:hover {
               transform: scale(1.05);
               transition: all 0.3s;
-              background: #464646;
+              background: #dd9700;
             }
             img {
               width: 60px;
@@ -491,7 +491,7 @@
             &:hover {
               transform: scale(1.05);
               transition: all 0.3s;
-              background: #dfdfdf;
+              background: #dd9700;
             }
 
             h2 {
@@ -608,7 +608,7 @@
             border: none;
 
             &:focus {
-              background: #383838;
+              background: #dd9700;
             }
           }
         }
@@ -811,8 +811,7 @@
           gap: 100px;
 
           .prevButton {
-            width: 270px;
-            height: 60px;
+            padding: 20px 70px;
             background: none;
             border-radius: 20px;
             color: #f6f6f6;
@@ -829,8 +828,7 @@
             }
           }
           .nextButton {
-            width: 270px;
-            height: 60px;
+            padding: 20px 50px;
             background: none;
             border-radius: 20px;
             color: #f6f6f6;
@@ -935,11 +933,11 @@
           .navigationButtons {
             display: flex;
             width: 100%;
-            justify-content: center;
+            justify-content: space-between;
+            gap: 0;
 
             .prevButton {
-              width: 110px;
-              height: 40px;
+              padding: 10px 40px;
               background: none;
               border-radius: 10px;
               color: #f6f6f6;
@@ -954,8 +952,7 @@
               }
             }
             .nextButton {
-              width: 110px;
-              height: 40px;
+              padding: 10px 30px;
               background: none;
               border-radius: 10px;
               color: #f6f6f6;
@@ -980,12 +977,12 @@
   padding: 50px;
   .next {
     display: flex;
-    justify-content: center;
-    gap: 100px;
+    justify-content: space-around;
+    // gap: 100px;
+    width: 100%;
 
     .prevButton {
-      width: 270px;
-      height: 60px;
+      padding: 20px 80px;
       background: none;
       border-radius: 20px;
       color: #f6f6f6;
@@ -1002,8 +999,7 @@
       }
     }
     .nextButton {
-      width: 270px;
-      height: 60px;
+      padding: 20px 30px;
       background: none;
       border-radius: 20px;
       color: #f6f6f6;
@@ -1024,15 +1020,16 @@
 
 @media (max-width: 500px) {
   #NextStep {
-    padding: 50px;
+    padding: 0px;
+    width: 100%;
     .next {
       display: flex;
       justify-content: center;
-      gap: 70px;
+      gap: 30px;
+      width: 100%;
 
       .prevButton {
-        width: 110px;
-        height: 40px;
+        padding: 10px 50px;
         background: none;
         border-radius: 10px;
         color: #f6f6f6;
@@ -1047,8 +1044,7 @@
         }
       }
       .nextButton {
-        width: 110px;
-        height: 40px;
+        padding: 10px 10px;
         background: none;
         border-radius: 10px;
         color: #f6f6f6;
@@ -1210,11 +1206,10 @@
         .buttons {
           display: flex;
           justify-content: space-between;
-          width: 90%;
+          width: 100%;
 
           button {
-            width: 110px;
-            height: 40px;
+            padding: 1px 10px;
             background: none;
             border-radius: 10px;
             color: #f6f6f6;

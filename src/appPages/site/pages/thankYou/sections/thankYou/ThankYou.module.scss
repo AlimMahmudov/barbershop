@@ -1,11 +1,13 @@
 #Thank {
   position: relative;
   z-index: 0;
+  background: linear-gradient(-45deg, #000000, #000000) fixed;
 
   &::before {
     content: "";
-    background: url("../../../../../../shared/assets/images/thankyou.jpeg")
-      no-repeat center/cover fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("../../../../../../shared/assets/images/thankyou.jpeg") no-repeat
+        center/cover fixed;
     position: absolute;
     top: 0;
     left: 0;
@@ -106,8 +108,9 @@
 
     &::before {
       content: "";
-      background: url("../../../../../../shared/assets/images/thankyou.jpeg")
-        no-repeat center/cover fixed;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../../../../../../shared/assets/images/thankyou.jpeg") no-repeat
+          center/cover fixed;
       position: absolute;
       top: 0;
       left: 0;
@@ -137,7 +140,7 @@
         position: relative;
         gap: 10px;
         h1 {
-          color: #dd9700;
+          color: #ffffff;
           box-shadow: #cacaca 2px;
           font-family: "Gilroy";
           font-size: 42px;
@@ -149,7 +152,7 @@
           font-size: 36px;
           font-weight: 700;
           line-height: 36px;
-          background: #dd9700;
+          background: #ffffff;
           color: #f6f6f6;
           padding: 15px;
           border-radius: 20px;
@@ -185,7 +188,7 @@
             font-size: 36px;
             font-weight: 400;
             line-height: 28.8px;
-            color: #ff5100;
+            color: #ffffff;
           }
         }
       }
