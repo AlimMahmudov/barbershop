@@ -7,6 +7,7 @@ import logo from "@/shared/assets/images/logo.svg";
 import { LuPhoneCall } from "react-icons/lu";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useLanguageStore } from "@/shared/stores/Language";
+// import { PHONE_NUMBER_WHATSAPP } from "@/constants/admin";
 
 const Header = () => {
   const { translate, setLanguage } = useLanguageStore();
@@ -82,9 +83,11 @@ const Header = () => {
                   <option value="kg">KG</option>
                   <option value="en">EN</option>
                 </select>
+                {/* <Link href={`tel:${PHONE_NUMBER_WHATSAPP}`} target={"_blank"}> */}
                 <button>
                   <LuPhoneCall /> +996 708 000 000
                 </button>
+                {/* </Link> */}
               </div>
             </>
           )}

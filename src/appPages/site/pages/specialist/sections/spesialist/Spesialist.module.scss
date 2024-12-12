@@ -1,0 +1,91 @@
+#Spesialist {
+  padding: 50px;
+  padding-top: 100px;
+  .spesialist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    h1 {
+      font-family: Bebas Neue;
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 60px;
+      color: #f6f6f6;
+    }
+    .buttonsPage {
+      display: flex;
+      align-items: center;
+
+      button {
+        width: 40px;
+        height: 40px;
+        border: solid 2px #f6f6f6;
+        background: none;
+        border-radius: 5px;
+        color: #f6f6f6;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .line {
+        width: 150px;
+        background: #f6f6f6;
+        height: 3px;
+      }
+    }
+    .block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        background: #222222;
+        border: none;
+        border-radius: 10px;
+        width: 190px;
+
+        img {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+        }
+        h1 {
+          font-family: Bebas Neue;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 24px;
+          color: #f6f6f6;
+        }
+        p {
+          background: #dd9700;
+          color: #f6f6f6;
+          padding: 5px 10px;
+          border-radius: 15px;
+        }
+      }
+    }
+    .buttons {
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      button {
+        width: 200px;
+        height: 50px;
+        border-radius: 30px;
+        border: solid 2px #f6f6f6;
+        background: none;
+        color: #f6f6f6;
+        font-size: 22px;
+      }
+    }
+  }
+}

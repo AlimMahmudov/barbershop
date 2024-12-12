@@ -14,15 +14,13 @@ const LayoutSlice: FC<SiteLayoutProps> = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 0);
   }, []);
 
   return (
     <div className="" id={scss.LayoutSlice}>
       {loading ? (
-        <>
-          <LoginM14 />
-        </>
+        <>{/* <LoginM14 /> */}</>
       ) : (
         <>
           <Header />

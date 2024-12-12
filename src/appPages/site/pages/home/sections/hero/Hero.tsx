@@ -33,7 +33,7 @@ const Hero = () => {
                 )}
               </p>
               <div className={scss.buttons}>
-                <button onClick={() => router.push("/record/")}>
+                <button onClick={() => router.push("/specialist/")}>
                   {translate(
                     "Записаться on-line",
                     "Онлайн жазылуу",
