@@ -1,3 +1,4 @@
+"use client";
 import scss from "./Spesialist.module.scss";
 import man from "@/shared/assets/images/man.svg";
 import man2 from "@/shared/assets/images/man2.svg";
@@ -11,6 +12,7 @@ import { TbRazorElectric } from "react-icons/tb";
 import { IoMan } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
+import { useRouter } from "next/navigation";
 
 const names = [
   { photo: man, name: "Макс Корж", work: "Топ-барбер" },
@@ -21,6 +23,7 @@ const names = [
 ];
 
 const Spesialist = () => {
+  const router = useRouter();
   return (
     <div id={scss.Spesialist}>
       <div className="container">
@@ -58,7 +61,7 @@ const Spesialist = () => {
           </div>
           <div className={scss.buttons}>
             <button>Назад</button>
-            <button>Продолжить</button>
+            <button onClick={() => router.push("/prices/")}>Продолжить</button>
           </div>
         </div>
       </div>
