@@ -153,6 +153,7 @@ const Services = () => {
   };
 
   const selectedData = data.find((el) => el.type === selectedType);
+  console.log(selectedData);
 
   return (
     <div id={scss.Services}>
