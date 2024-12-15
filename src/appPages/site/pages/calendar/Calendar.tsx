@@ -3,12 +3,14 @@ import React, { useState } from "react";
 import Calendar, { CalendarProps } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./custom-calendar.css";
+import { useLanguageStore } from "@/shared/stores/Language";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const MyCustomCalendar = () => {
   const [selectedDate, setSelectedDate] = useState<Value>(null);
+  const { translate } = useLanguageStore();
   const handleDateChange: CalendarProps["onChange"] = (value) => {
     setSelectedDate(value);
   };
@@ -23,7 +25,7 @@ const MyCustomCalendar = () => {
       <Calendar
         onChange={handleDateChange}
         value={selectedDate}
-        locale="ru-RU"
+        locale={translate("en-EN", "ru-RU", "")}
       />
     </div>
   );
