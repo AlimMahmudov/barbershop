@@ -21,12 +21,14 @@ const MyCustomCalendar = () => {
   );
 
   return (
-    <div className="calendar-container">
-      <Calendar
-        onChange={handleDateChange}
-        value={selectedDate}
-        locale={translate("ru-RU", "kg-KG", "en-EN")} // kg not worked sorry 😐 if you want to add kg use "date-fns" library!!!
-      />
+    <div className="container">
+      <div className="calendar-container">
+        <Calendar
+          onChange={handleDateChange}
+          value={selectedDate}
+          locale={translate("ru-RU", "kg-KG", "en-EN")} // kg not worked sorry 😐 if you want to add kg use "date-fns" library!!!
+        />
+      </div>
     </div>
   );
 };
