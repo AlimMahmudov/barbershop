@@ -25,7 +25,7 @@ const MyCustomCalendar = () => {
       <Calendar
         onChange={handleDateChange}
         value={selectedDate}
-        locale={translate("en-EN", "ru-RU", "")}
+        locale={translate("ru-RU", "kg-KG", "en-EN")} // kg not worked sorry 😐 if you want to add kg use "date-fns" library!!!
       />
     </div>
   );
