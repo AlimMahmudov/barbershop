@@ -1,0 +1,315 @@
+#Map {
+  padding: 50px;
+
+  .map {
+    display: flex;
+    flex-direction: column;
+
+    .text {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        img {
+          width: 131.54px;
+          height: 127.95px;
+        }
+
+        .logo_text {
+          h1 {
+            font-family: BERNIER Distressed;
+            font-size: 41.33px;
+            font-weight: 400;
+            line-height: 49.59px;
+            color: #ffffff;
+          }
+          p {
+            font-family: Gotham Pro;
+            font-size: 21.52px;
+            font-weight: 400;
+            line-height: 25.83px;
+            color: #f6f6f6;
+          }
+        }
+      }
+      button {
+        width: 270px;
+        height: 70px;
+        border-radius: 22px;
+        color: #ffffff;
+        background: #dd9700;
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: all 0.3s;
+          background: #ffc13a;
+        }
+      }
+    }
+
+    .map_text_mob {
+      width: 100%;
+      border-radius: 20px;
+      background: #000;
+
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px;
+      gap: 25px;
+
+      h1 {
+        font-family: Bebas Neue;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 30px;
+        color: #dd9700;
+        width: 260px;
+      }
+
+      p {
+        font-family: Arial;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #ffffff;
+      }
+      .icons {
+        display: flex;
+        gap: 20px;
+        h2 {
+          color: #dd9700;
+          font-size: 25px;
+        }
+      }
+    }
+    .maps {
+      // width: 100%;
+      // height: 100%;
+      padding: 50px 0px;
+      // height: 1000px;
+      display: flex;
+      flex-direction: column;
+      iframe {
+        // width: 100%;
+        height: 600px;
+        border-radius: 20px;
+        background: none;
+        // z-index: -1;
+
+        background-color: #000; /* Черный фон для карты */
+        filter: grayscale(100%) brightness(30%); /* Затемнение карты */
+      }
+      .map_text {
+        z-index: 1;
+        width: 420px;
+        gap: 0px;
+        border-radius: 20px;
+        opacity: 0px;
+        background: #ffffff;
+        margin-top: -300px;
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        gap: 25px;
+
+        h1 {
+          font-family: Bebas Neue;
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 30px;
+          color: #dd9700;
+          width: 260px;
+        }
+
+        p {
+          font-family: Arial;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #000000;
+        }
+        .icons {
+          display: flex;
+          gap: 20px;
+          h2 {
+            color: #dd9700;
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #Map {
+    padding: 50px 0;
+
+    .map {
+      display: flex;
+      flex-direction: column;
+
+      .text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+
+          img {
+            width: 80.54px;
+            height: 100%;
+          }
+
+          .logo_text {
+            h1 {
+              font-family: BERNIER Distressed;
+              font-size: 31.33px;
+              font-weight: 400;
+              line-height: 49.59px;
+              color: #ffffff;
+            }
+            p {
+              font-family: Gotham Pro;
+              font-size: 18.52px;
+              font-weight: 400;
+              line-height: 25.83px;
+              color: #f6f6f6;
+            }
+          }
+        }
+        button {
+          width: 100%;
+          height: 50px;
+          border-radius: 22px;
+          color: #ffffff;
+          background: #dd9700;
+          border: none;
+          font-size: 20px;
+          font-weight: 700;
+          margin-top: 20px;
+        }
+      }
+      .map_text_mob {
+        width: 100%;
+        border-radius: 20px;
+        background: #000000;
+
+        display: block;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        gap: 25px;
+
+        h1 {
+          font-family: Bebas Neue;
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 30px;
+          color: #dd9700;
+          width: 260px;
+        }
+
+        p {
+          font-family: Arial;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 20px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #ffffff;
+        }
+        .icons {
+          display: flex;
+          gap: 20px;
+          h2 {
+            color: #dd9700;
+            font-size: 25px;
+          }
+        }
+      }
+      .maps {
+        width: 100%;
+        height: 100%;
+        padding: 00px 0px;
+        // height: 1000px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        iframe {
+          width: 100%;
+          height: 300px;
+          border-radius: 20px;
+          background: none;
+          // position: relative;
+          z-index: -1;
+
+          background-color: #000;
+          filter: grayscale(80%) brightness(70%);
+        }
+        .map_text {
+          width: 90%;
+          border-radius: 20px;
+          background: #000;
+          margin-top: 0px;
+          margin-left: 0px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 20px;
+          gap: 25px;
+          display: none;
+
+          h1 {
+            font-family: Bebas Neue;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 30px;
+            color: #dd9700;
+            width: 260px;
+          }
+
+          p {
+            font-family: Arial;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+          }
+          .icons {
+            display: flex;
+            gap: 20px;
+            h2 {
+              color: #dd9700;
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

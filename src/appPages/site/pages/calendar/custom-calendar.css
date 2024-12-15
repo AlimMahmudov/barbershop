@@ -1,0 +1,119 @@
+.calendar-container {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.react-calendar {
+  position: relative;
+  width: 100%;
+  max-width: 821px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  padding: 10px;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.react-calendar__navigation button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.react-calendar__navigation button:disabled {
+  color: #444;
+  cursor: not-allowed;
+}
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+.react-calendar__navigation__arrow {
+  position: absolute;
+  right: 0;
+  font-size: 45px;
+}
+.react-calendar__navigation__prev-button {
+  right: 95px;
+}
+.react-calendar__navigation__label {
+  position: absolute;
+  left: 7px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.react-calendar__month-view__weekdays {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.react-calendar__month-view__weekdays__weekday {
+  background: #1e1e1e;
+  flex-basis: 0 !important;
+  border-radius: 10px;
+}
+.react-calendar__tile {
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #333;
+  margin: 5px;
+  padding: 15px 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.react-calendar__tile--active {
+  background: #444;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.react-calendar__tile:hover {
+  background: #333;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  /* if you want to add weekend days*/
+}
+
+.react-calendar__tile--now {
+  color: #fff;
+  border: 2px solid #fff !important;
+}
+
+.react-calendar__month-view__days {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}

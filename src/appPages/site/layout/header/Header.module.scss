@@ -1,0 +1,136 @@
+.header {
+  position: fixed;
+  width: 100%;
+  padding-block: 10px;
+
+  background: rgba(31, 31, 31, 0);
+  backdrop-filter: blur(10px);
+  color: white;
+  z-index: 1000;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+
+    .buutons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      button {
+        background: #000000bd;
+        padding: 10px 20px;
+        border-radius: 20px;
+        color: #ffffff;
+        border: solid #dd9700 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 22px;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: all 0.3s;
+          background: #dd9700;
+          color: #000;
+        }
+      }
+      select {
+        background: #000000bd;
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        color: #ffffff;
+        border: solid #dd9700 3px;
+        font-size: 22px;
+        outline: none;
+        transition: all 0.3s;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: all 0.3s;
+          background: #dd9700;
+          color: #000;
+        }
+
+        option {
+          text-align: center;
+          background: #000000;
+          color: #ffffff;
+          font-size: 16px;
+          padding: 8px;
+          border: none;
+
+          &:checked {
+            background: #dd9700; // Цвет выбранной опции
+          }
+        }
+      }
+    }
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 60px;
+
+    img {
+      width: 78px;
+      height: 74px;
+    }
+
+    @media (max-width: 500px) {
+      img {
+        width: 58px;
+        height: 54px;
+      }
+    }
+
+    .nav {
+      color: white;
+      display: flex;
+      gap: 60px;
+
+      a {
+        color: rgb(161, 161, 161);
+        text-decoration: none;
+        cursor: pointer;
+        color: white;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: "Bebas Neue";
+      }
+    }
+    @media (max-width: 500px) {
+      .nav {
+        color: white;
+        display: none;
+        gap: 60px;
+
+        a {
+          color: rgb(161, 161, 161);
+          text-decoration: none;
+          cursor: pointer;
+          color: white;
+          font-size: 20px;
+          text-transform: uppercase;
+          font-family: "Bebas Neue";
+        }
+      }
+    }
+  }
+
+  .bur {
+    padding: 10px 10px;
+    color: #ffffff;
+    font-size: 32px;
+    background: none;
+    border: none;
+  }
+}

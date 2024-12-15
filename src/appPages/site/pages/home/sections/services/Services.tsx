@@ -156,7 +156,7 @@ const Services = () => {
   console.log(selectedData);
 
   return (
-    <div id={scss.Services}>
+    <div data-aos="fade-up" id={scss.Services}>
       <div className="container">
         <div className={scss.services}>
           <div className={scss.services_text}>
@@ -175,7 +175,12 @@ const Services = () => {
           </div>
           <div className={scss.block}>
             {selectedData?.box.map((item, idx) => (
-              <div key={idx} className={scss.box}>
+              <div
+                key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 200}
+                className={scss.box}
+              >
                 <div className={scss.num}>
                   <h1>{item.num}</h1>
                   <h1>{item.name}</h1>

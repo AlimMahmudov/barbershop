@@ -1,0 +1,145 @@
+#Sertifikat {
+  padding: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  .sertifikat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .box {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      h1 {
+        font-family: Bebas Neue;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 80px;
+      }
+
+      h2 {
+        font-family: Gotham Pro;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28.8px;
+        width: 400px;
+      }
+
+      p {
+        font-family: Gotham Pro;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 26px;
+        width: 390px;
+      }
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+
+        h3 {
+          width: 400px;
+          color: #dd9700;
+          font-size: 30px;
+        }
+
+        button {
+          width: 200px;
+          height: 50px;
+          border-radius: 20px;
+          background: none;
+          color: #ffffff;
+          border: solid #dd9700 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          transition: all 0.3s;
+
+          &:hover {
+            transform: scale(1.05);
+            transition: all 0.3s;
+            background: #dd9700;
+            color: #000;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #Sertifikat {
+    padding: 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    margin-top: 80px;
+
+    .sertifikat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      .box {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        h1 {
+          font-family: Bebas Neue;
+          font-size: 40px;
+          font-weight: 700;
+          line-height: 40px;
+        }
+
+        h2 {
+          font-family: Gotham Pro;
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 28.8px;
+          width: 100%;
+        }
+
+        p {
+          font-family: Gotham Pro;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 26px;
+          width: 100%;
+        }
+        .buttons {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+
+          h3 {
+            width: 100%;
+            color: #dd9700;
+            font-size: 22px;
+          }
+
+          button {
+            width: 200px;
+            height: 50px;
+            border-radius: 20px;
+            background: none;
+            color: #ffffff;
+            border: solid #dd9700 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+          }
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        margin-top: 50px;
+      }
+    }
+  }
+}
