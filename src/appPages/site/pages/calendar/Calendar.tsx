@@ -19,7 +19,7 @@ const MyCustomCalendar = () => {
       ? `${selectedDate[0]?.toDateString()} - ${selectedDate[1]?.toDateString()}`
       : selectedDate?.toDateString()
   );
-  //hello
+
   return (
     <div className="container">
       <div className="calendar-container">

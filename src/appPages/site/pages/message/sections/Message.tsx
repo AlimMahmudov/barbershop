@@ -5,7 +5,6 @@ import { TbRazorElectric } from "react-icons/tb";
 import { IoMan } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
-import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 
@@ -16,12 +15,7 @@ interface IFormTelegram {
 }
 
 const Message = () => {
-  const router = useRouter();
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
-
-  const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
-  const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
-
   const messageModel = (data: IFormTelegram) => {
     let messageTG = `Name: <b>${data.name}</b>\n`;
     messageTG += `Email Addres:   <b>${data.email}</b>\n`;

@@ -5,8 +5,8 @@ import Map from "../../home/sections/map/Map";
 const RecordPage = () => {
   return (
     <div>
-      {/* <Date /> */}
-      {/* <Map /> */}
+      <Date />
+      <Map />
     </div>
   );
 };
